@@ -1,0 +1,29 @@
+# core: 8.x
+
+name: Bioetica Universidad El Bosque
+type: theme
+description: "Sub theme for Bootstrap."
+core: 8.x
+base theme: bootstrap
+
+libraries:
+  - 'bioetica/base-bioetica'
+
+
+regions:
+  header_info: 'Header Info'
+  navigation: 'Navigation'
+  navigation_collapsible: 'Navigation (Collapsible)'
+  header: 'Top Bar'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Content'
+  sidebar_first: 'Primary'
+  sidebar_second: 'Secondary'
+  pre_footer: 'Primer Footer'
+  footer: 'Footer'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+
+
+

@@ -1,0 +1,8 @@
+base-bioetica:
+    dependencies:
+    - core/jquery
+    css:
+      theme:
+        css/custom.css: {}
+    js:
+      js/custom.js: {}

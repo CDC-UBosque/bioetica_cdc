@@ -1,0 +1,12 @@
+//= require ../vendor/bootstrap-sass/assets/javascripts/bootstrap/affix.js
+//= require ../vendor/bootstrap-sass/assets/javascripts/bootstrap/alert.js
+//= require ../vendor/bootstrap-sass/assets/javascripts/bootstrap/button.js
+//= require ../vendor/bootstrap-sass/assets/javascripts/bootstrap/carousel.js
+//= require ../vendor/bootstrap-sass/assets/javascripts/bootstrap/collapse.js
+//= require ../vendor/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js
+//= require ../vendor/bootstrap-sass/assets/javascripts/bootstrap/modal.js
+//= require ../vendor/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js
+//= require ../vendor/bootstrap-sass/assets/javascripts/bootstrap/tab.js
+//= require ../vendor/bootstrap-sass/assets/javascripts/bootstrap/transition.js
+//= require ../vendor/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js
+//= require ../vendor/bootstrap-sass/assets/javascripts/bootstrap/popover.js

@@ -1,0 +1,49 @@
+name = Droplet
+description = Uses the Bootstrap Framework SASS source files and must be compiled (not for beginners).
+core = 7.x
+base theme = bootstrap
+
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Regions
+;;;;;;;;;;;;;;;;;;;;;
+regions[header_info]    = 'Header Info'
+regions[navigation]     = 'Navigation'
+regions[header]         = 'Top Bar'
+regions[highlighted]    = 'Highlighted'
+regions[help]           = 'Help'
+regions[content]        = 'Content'
+regions[sidebar_first]  = 'Primary'
+regions[sidebar_second] = 'Secondary'
+regions[footer]         = 'Footer'
+regions[page_top]       = 'Page top'
+regions[page_bottom]    = 'Page bottom'
+
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Stylesheets
+;;;;;;;;;;;;;;;;;;;;;
+
+stylesheets[all][] = css/style.css
+
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Scripts
+;;;;;;;;;;;;;;;;;;;;;
+
+scripts[] = 'js/bootstrap.js'
+scripts[] = 'js/theme.js'
+
+; Disable BootstrapCDN so the compiled SASS source files can be used.
+settings[bootstrap_cdn] = ''
+
+noscan[] = node_modules
+noscan[] = node_modules/*
+noscan[] = src/vendor
+noscan[] = src/vendor/*
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Google Fonts
+;;;;;;;;;;;;;;;;;;;;;
+
+;fonts[google_fonts_api][] = "Josefin Slab&subset=latin#600"
