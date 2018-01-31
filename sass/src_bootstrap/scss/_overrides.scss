@@ -1,0 +1,18 @@
+html, input, textarea, select, button {
+  -webkit-font-smoothing: antialiased;
+}
+
+#admin-menu {
+  box-shadow: none !important;
+}
+
+body.admin-menu {
+  .navbar-fixed-top {
+    top: 29px;
+    z-index: 110;
+  }
+}
+
+body.navbar-is-fixed-top {
+  padding-top: 70px;
+}

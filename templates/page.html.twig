@@ -56,7 +56,7 @@
 {# Pre-Header #}
 {% if page.header_info %}
   {% block header_info %}
-    <div class="{{ container }} pre-header">
+    <div class="container-top pre-header">
         {{ page.header_info }}
     </div>
   {% endblock %}
@@ -155,6 +155,21 @@
           <a id="main-content"></a>
           {{ page.content }}
         {% endblock %}
+        
+        {% block content_second %}
+          <a id="main-content"></a>
+          {{ page.content_second }}
+        {% endblock %}
+        
+        {% block content_third %}
+          <a id="main-content"></a>
+          {{ page.content_third }}
+        {% endblock %}
+        
+        {% block content_fourth %}
+          <a id="main-content"></a>
+          {{ page.content_fourth }}
+        {% endblock %}
       </section>
 
       {# Sidebar Second #}
@@ -182,5 +197,14 @@
     <footer class="footer {{ container }}" role="contentinfo">
       {{ page.footer }}
     </footer>
+  {% endblock %}
+{% endif %}
+
+
+{% if page.post_footer %}
+  {% block post_footer %}
+    <div class="footer-vigilada {{ container }}" >
+      {{ page.post_footer }}
+    </div>
   {% endblock %}
 {% endif %}

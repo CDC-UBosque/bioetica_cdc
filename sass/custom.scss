@@ -1,0 +1,25 @@
+// ------------------------------------ Global elements ------------------------------------ 
+@import 'bootstrap';
+@import 'fonts';
+@import 'config';
+@import 'artifacts';
+@import 'layout';
+@import 'animate';
+@import 'base';
+
+// ------------------------------------ Elements (footer, header, menus, etc) ------------------------------------ 
+@import 'elements/_footer.scss';
+@import 'elements/_submenu-left.scss';
+@import 'elements/_container-generals.scss';
+@import 'elements/_header-menu.scss';
+@import 'elements/_bioetica-home-block';
+@import 'elements/_bioetica-home-block-revista';
+				
+// ------------------------------------ Pagess (Home, inners) ------------------------------------ 
+@import 'pages/_home.scss';
+@import 'pages/_eventos.scss';
+@import 'pages/_eventos-detail.scss';
+@import 'pages/_programas-academicos.scss';
+@import 'pages/_docentes.scss';
+@import 'pages/_boletines.scss';
+@import 'pages/_links-interes.scss';

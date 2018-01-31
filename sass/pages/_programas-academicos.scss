@@ -1,0 +1,474 @@
+// ------------------ Acordiones creados desde drupal -----------------------|
+@mixin acordion-wrapper {
+	// write the css here
+	font-family: $font-baseb;
+	font-size: $font-serif-xs;
+	color: $color_gray_80;
+	letter-spacing: 2.18px;
+	line-height: 15px;
+	text-transform: uppercase;
+	cursor: pointer;
+	padding: 15px 0 12px;
+	cursor: pointer;
+	border-bottom: 1px solid #babcc0;
+	position: relative;
+	padding-right: 35px;
+	margin-bottom: 0;
+	&::before {
+	    content: "";
+	    position: absolute;
+	    left:0;
+	    top: 100%;
+	    height: 1px;
+	    width: 100%;
+	    background: $color_gray_50;
+	    transition: 1.5s ease-out all;
+	}
+	
+	&:hover {
+		  color: $color_brand;
+		&::before {
+	   	    left: 0;
+	   	    background: $color_brand;
+	   	}
+	   	&::after{
+		   	color: $color_brand;
+	   	}
+	}
+	
+	&[aria-expanded="true"]{
+		color: $color_brand;
+		border-bottom: 1px solid $color_brand;
+		&::after{
+			color: red;
+		}
+	}
+}
+
+@mixin acordion-wrapper-desplegado {
+	padding: 2rem;
+}
+
+// ------------------- Programas academicos  ------------------- //
+.page-node-type-programa-academico, .page-node-type-page, .page-node-type-proyecto-de-investigacion, .page-node-type-pagina-de-parrafo-titulo-e-image, .page-node-type-links-de-interes{
+	
+	// background full
+	.row > section{
+		position: relative;
+		border: none;
+		background: $color_gray_5;
+		padding: 3rem 0;
+		&::before,
+		&::after {
+			content: "";
+			background: $color_gray_5;
+			display: block;
+			//width: $bg-demasia-width;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 100%;
+		 }
+		&::after {
+		     left: auto;
+		     right: 100%;
+		 }
+		 
+		 // Remove background for highlighted section
+		 .highlighted{
+			 position: initial;
+			 background: initial;
+			 
+			 // Elements inside top section (banner, title and description)
+			 .field--name-field-cabezote-itb-titulo{
+				 position: absolute;
+				 top: 6rem;
+				 left: 5%;
+				 text-shadow: 0px 2px 10px rgba(0,0,0,0.7);
+				 p{
+					 font: $font-bl-l $font-bli;
+					 color: $color_brand_white;
+					 @media only screen and (max-width: 600px) {
+						 font-size: $font-brandb-m;
+				    }
+				 }
+			 }
+			 
+			 .field--name-body{
+				 position: absolute;
+				 top: 12rem;
+				 left: 5%;
+				 max-width: 52rem;
+				 text-shadow: 0px 2px 10px rgba(0,0,0,0.7);
+				 padding-right: 1rem;
+				@media only screen and (max-width: 400px) {
+						top: 32%;
+				}
+				 p{
+					 font: $font-baser-s $font-serif-italic;
+					 color: $color_brand_white;
+				 }
+			 }
+		 }
+		 
+		 // Content box info
+		 .node--type-programa-academico, .node--type-proyecto-de-investigacion, .node--type-links-de-interes, .node--type-pagina-de-parrafo-titulo-e-image{
+			 padding: 3rem 4rem;
+			 background: $color_brand_white;
+			 
+			 @media screen and (max-width: $mobile) {
+				padding: 3rem 2rem;
+			}
+			 
+			 // Legal snies
+			 .field--name-field-bloque-legal{
+				color: $color_text;
+				font-size: 11px;
+				letter-spacing: 0.5px;
+				padding-right: 5px;
+				margin-bottom: 1rem;
+			 }
+			 
+			 // Titulo obtenido, creditos, duracion, 
+			 .field--name-field-titulo-obtenido, .field--name-field-creditos, .field--name-field-duracion, .field--name-field-nivel-de-formacion, .field--name-field-modalidad{
+				@include inline-block(top);
+				@include grid-porcentaje(2);
+				color: $color_text;
+				font-size: 11px;
+				letter-spacing: 0.5px;
+				padding-right: 5px;
+			 }
+			 
+			 // Highlighted text
+			 .field--name-field-destacado{
+				@include inline-block(top);
+				@include grid-porcentaje(10);
+				margin: 4rem 0;
+			 }
+			 
+			 // Director, email, info director
+			 .field--name-field-director, .field--name-field-correo-electronico, .field--name-field-informacion-del-director{
+				 @include grid-porcentaje(10);
+				 margin-bottom: 1rem;
+				 
+				 .field--label{
+					 font: $font-bsb-m $font-bsb;
+				 }
+				 .field--item{
+					 font-family: $font-serif-italic;
+				 }
+			 }
+			 
+			 // accordions
+			 .form-wrapper{
+				@include grid-porcentaje(12);
+				border: 0px;
+				border-radius: 0;
+				box-shadow: none;
+				border-color: $color_brand_white;
+				
+				.panel-heading{
+					@include acordion-wrapper;
+					background: none;
+					border-color: none;
+					.panel-title{
+						font-size: $font-baser-m;
+						font-family: $font-baseb;
+						color: $color_brand_dark;
+						&[aria-expanded="true"]{
+							color: $color_brand;
+							&::before{
+								border-bottom: 1px solid $color_brand;
+							}
+							&::after{
+							position: absolute;
+							right: 0;
+							top: 50%;
+							height: 20px;
+							width: 20px;
+							font-family: 'Glyphicons Halflings';
+							content: "\e113";
+							color: $color_brand;
+							}
+						}
+						
+						&[aria-expanded="false"]{
+							color: $color_brand_dark;
+							&::after{
+							position: absolute;
+							right: 0;
+							top: 50%;
+							height: 20px;
+							width: 20px;
+							font-family: 'Glyphicons Halflings';
+							content: "\e114";
+							color: $color_gray_50;
+							}
+						}
+						
+						&:hover{
+							border-color: $color_brand_white;
+							&::after{
+								color:$color_brand;
+							}
+						}
+					}
+				}
+				
+				.panel-body{
+					@include acordion-wrapper-desplegado;
+					
+					.field__label{
+						font-size: $font-bl-m;
+						font-family: $font-bl;
+						margin-top: 1rem 0;
+					}
+					.field__item{
+						font-size: $font-baser-s;
+						font-family: $font-basel;
+						line-height: 18px;
+						p{
+							font-family: $font-basel;
+						}
+						ul {
+							//list-style-type: disc;
+					        li {
+					          @include interna-parrafo;
+					          //padding-left: 25px;
+					          @include bullet;
+					          font-family: $font-basel;
+					        }
+						}
+					}
+				}
+				
+				.field--name-field-ec-estructura-del-programa{
+					@include acordion-wrapper-desplegado;
+					
+					.field__label{
+						font-size: $font-bl-m;
+						font-family: $font-bli;
+					}
+					.field__item{
+						font-size: $font-baser-s;
+						font-family: $font-basel;
+						line-height: 18px;
+						
+						.paragraph--type--estructura-del-programa{
+							border-bottom: 1px solid $color_gray_10;
+							margin-bottom: 1.3rem;
+							padding-bottom: 0.6rem;
+						}
+						
+						ul {
+			        //list-style-type: disc;
+			        li {
+			          @include interna-parrafo;
+			          //padding-left: 25px;
+			          @include bullet;
+			          font-family: $font-basel;
+			        }
+						}
+						// estructura del programa
+						// nombre materia
+						.field--name-field-ec-modulo-o-semestre{
+							font-size: $font-bl-m;
+							font-family: $font-bl;
+							margin-bottom: 0.8rem;
+						}
+						// items materia
+						.field--name-field-ec-temario{
+							font-size: $font-baser-s;
+							font-family: $font-basel;
+						}
+					}
+				}
+				
+				.field--name-field-ec-conferencistas{
+					@include grid-porcentaje(9);
+					@include acordion-wrapper-desplegado;
+					p{
+						font-size: $font-baser-s;
+						font-family: $font-basel;
+						line-height: 18px;
+					}
+				}
+			}
+			 
+			 // Paragraphs proyectos investigacion
+			 .paragraph--type--proyectos-de-investigacion{
+				 margin: 2rem 0;
+				 border-bottom: 1px solid $color_gray_5;
+				 padding-bottom: 2rem;
+				 // Nombre
+				 .field--name-field-nombre-del-proyecto{
+					 @include inline-block(top);
+					 @include grid-porcentaje(5);
+					 .field--label{
+						 font: $font-baser-s $font-bsb;
+						 border-bottom: 1px solid $color_gray_50;
+						 padding-bottom: 1rem;
+					 }
+					 .field--item{
+						 padding-top: 1rem;
+					 }
+					 @media only screen and (max-width: $tablet) {
+						@include grid-porcentaje(12);
+					 }
+				 }
+				 // Responsable
+				 .field--name-field-responsable{
+					 @include inline-block(top);
+					 @include grid-porcentaje(3);
+					 .field--label{
+						 font: $font-baser-s $font-bsb;
+						 border-bottom: 1px solid $color_gray_50;
+						 padding-bottom: 1rem;
+					 }
+					 .field--item{
+						 padding-top: 1rem;
+					 }
+					 @media only screen and (max-width: $tablet) {
+						@include grid-porcentaje(5);
+						margin-top: 2rem;
+					 }
+				 }
+				 // Area
+				 .field--name-field-area-de-la-investigacion{
+					 @include inline-block(top);
+					 @include grid-porcentaje(3);
+					 .field--label{
+						 font: $font-baser-s $font-bsb;
+						 border-bottom: 1px solid $color_gray_50;
+						 padding-bottom: 1rem;
+					 }
+					 .field--item{
+						 padding-top: 1rem;
+						 a{
+							font: $font-baser-s $font-serif-italic;
+							text-decoration: none;
+							color: $color_brand;
+							@include underline-hover;
+						 }
+					 }
+					 @media only screen and (max-width: $tablet) {
+						@include grid-porcentaje(5);
+						margin-top: 2rem;
+					 }
+				 }
+			 }
+			 
+		 }
+		 
+		 //  Content box info
+		 div[class*="view-id-profesor_investigador"]{
+			 // accordions
+			 .views-row{
+				@include grid-porcentaje(12);
+				border: none;
+				border-radius: 0;
+				box-shadow: 0;
+				border-color: none;
+				background: none;
+				
+				.ui-accordion-header{
+					@include acordion-wrapper;
+					background: none;
+					border: 0px;
+					.ui-icon{
+						display: none;
+					}
+					&[aria-expanded="true"]{
+							color: $color_brand;
+							&::before{
+								border-bottom: 1px solid $color_brand;
+							}
+							&::after{
+							position: absolute;
+							right: 0;
+							top: 50%;
+							height: 20px;
+							width: 20px;
+							font-family: 'Glyphicons Halflings';
+							content: "\e113";
+							color: $color_brand;
+							}
+						}
+						
+						&[aria-expanded="false"]{
+							&::after{
+							position: absolute;
+							right: 0;
+							top: 50%;
+							height: 20px;
+							width: 20px;
+							font-family: 'Glyphicons Halflings';
+							content: "\e114";
+							color: $color_gray_50;
+							}
+						}
+					.field-content{
+						font-size: $font-baser-m;
+						&:hover{
+							&::after{
+								color:$color_brand;
+							}
+						}
+					}
+				}
+				
+				.ui-accordion-content{
+					@include acordion-wrapper-desplegado;
+					    border: 0px;
+					    height: auto !important;
+					// Imagen profesor
+					.views-field-field-imagen-del-profesor{
+						margin: 1rem 0;
+					    width: 15rem;
+					    border-radius: 100%;
+					    overflow: hidden;
+					    height: 15rem;
+					}
+					// Cargo
+					.views-field-field-cargo{
+						font: $font-baser-s $font-bsb;
+						margin-bottom: 1rem;
+						@include grid-porcentaje(10);
+					}
+					// pais
+					.views-field-field-pais{
+						font: $font-baser-s $font-bsb;
+						@include grid-porcentaje(10);
+					}
+					// Body copy
+					.views-field-body{
+						margin: 1rem 0;
+						@include grid-porcentaje(10);
+						span{
+							font: $font-baser-s $font-bsb;
+						}
+					}
+					// proyectos de investigacion
+					.views-field-field-proyectos-de-investigacion{
+						margin: 1rem 0;
+						@include grid-porcentaje(10);
+						span{
+							font: $font-baser-s $font-bsb;
+						}
+					}
+					// email and cvlac
+					.views-field-field-correo-electronico, .views-field-field-hoja-de-vida-cvlac{
+						@include grid-porcentaje(10);
+						a{
+							font: $font-baser-s $font-serif-italic;
+							text-decoration: none;
+							color: $color_brand;
+							@include underline-hover;
+						}
+					}
+				}
+			}
+		 }
+	}
+}

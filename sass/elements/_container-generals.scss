@@ -1,0 +1,63 @@
+// --------------------------- Some global elements ----------------------------- //
+.page-node-type-programa-academico, .page-node-type-page, .page-node-type-proyecto-de-investigacion, .page-node-type-pagina-de-parrafo-titulo-e-image, .page-node-type-links-de-interes{
+	
+	// White background to inner containers
+	.region-content{
+		
+		// links
+		a{
+			font: $font-baser-s $font-serif-italic;
+			text-decoration: none;
+			color: $color_brand;
+			@include underline-hover;
+		}
+		
+		// Paragraph width
+		p{
+		   @include grid-porcentaje(10);
+		   
+		   @media screen and (max-width: $mobile) {
+				@include grid-porcentaje(12);
+			}
+		}
+		
+		// Tables titles
+		table{
+			th{
+				font: $font-baser-s $font-bsb;
+				letter-spacing: 2px;
+			}
+			td[class*="views-field views-field-field-ano-del-trabajo"]{
+				font: $font-baser-s $font-bsb;
+			}
+			td[class*="views-field views-field-field-titulo-del-trabajo"]{
+				font: $font-baser-s $font-serif-italic;
+			}
+		}
+		
+	}
+	
+	// Hide H2 title elements
+	.node--type-page{
+		h2{
+			display: none;
+		}
+	}
+	
+}
+
+.page-node-type-pagina-de-parrafo-titulo-e-image{
+	
+	.region-content{
+	// List fix
+		ul{
+		    padding-left: 3rem;
+		    @include grid-porcentaje(10);
+		    li, ol{
+			    @include interna-parrafo;
+			    //padding-left: 25px;
+			    @include bullet;
+		    }
+		}
+	}
+}

@@ -1,0 +1,93 @@
+// ------------------- Eventos pagina  ------------------- //
+.region-content{
+	
+	.evento{
+		position: relative;
+		max-width: 800px;
+		margin: auto;
+		border: none;
+		background: $color_brand_white;
+		&::before,
+		&::after {
+				content: "";
+				background: $color_gray_5;
+				display: block;
+				//width: $bg-demasia-width;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 100%;
+		 }
+		&::after {
+		     left: auto;
+		     right: 100%;
+		 }
+	
+	
+		// Imagen
+		.field--name-field-image{
+			margin-bottom: 2rem;
+		}
+		
+		// description
+		.field--name-field-bocadillo{
+			padding: 1rem 3rem;
+			max-width: 64rem;
+			margin: auto;
+		}
+		
+		// fechas
+		.field--name-field-fechas-de-inicio-y-finaliz{
+			padding: 1rem 3rem;
+			max-width: 64rem;
+			margin: auto;
+			font: $font-baser-s $font-serif-italic;
+		}
+		
+		// dirigido a
+		.field--name-field-dirigido-a{
+			padding: 1rem 3rem;
+			max-width: 64rem;
+			margin: auto;
+			font: $font-baser-s $font-serif-italic;
+		}
+		
+		// body
+		.field--name-body{
+			padding: 1rem 3rem;
+			max-width: 64rem;
+			margin: auto;
+		}
+		
+		// lugar
+		.field--name-field-lugar{
+			padding: 1rem 3rem;
+			max-width: 64rem;
+			margin: auto;
+			font: $font-baser-s $font-bsb;
+		}
+		
+		// organiza
+		.field--name-field-organiza{
+			padding: 1rem 3rem;
+			max-width: 64rem;
+			margin: auto;
+			font: $font-baser-s $font-bsb;
+		}
+		
+		// invitados
+		.field--name-field-invitados{
+			padding: 1rem 3rem;
+			max-width: 64rem;
+			margin: auto;
+		}
+		
+		// social icons
+		span{
+			max-width: 59rem;
+			margin: 1rem auto 3rem;
+			display: block;
+		}
+	}
+}

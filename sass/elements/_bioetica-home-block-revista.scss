@@ -1,0 +1,59 @@
+// --------------------------- bloque home bioetica ----------------------------- //
+.revista-bioetica{
+	
+	padding: 0;
+    display: table;
+    position: relative;
+    background: url('../images/banners/revistabg.png');
+    
+    div:first-child{
+	    @media only screen and (max-width: 991px) {
+		    bottom: 0;
+			position: absolute;
+	    }
+	    
+	    @media only screen and (max-width: 767px) {
+			position: relative;
+			border-bottom: 1px solid $color_gray_50;
+	    }
+
+    }
+    
+    div:last-child{
+	    
+	    float: right;
+	    //color green h2 
+		h2{
+			font: $font-bsb-l $font-bli;
+			margin-bottom: 2rem;
+			margin-top: 6rem;
+			
+			@media only screen and (max-width: 1200px) {
+		    		margin-top: 2rem;
+	    		}
+		}
+		
+		//txt
+		.field--item{
+			margin-bottom: 2rem;
+		}
+		
+		div{
+			float: none;
+		}
+		
+		a{
+			@include buton-xl-green;
+			
+			@media only screen and (max-width: 991px) {
+		    		margin-bottom: 2rem;
+	    		}
+		}
+		
+    }
+	
+}
+
+.region-content-third{
+	
+}

@@ -1,0 +1,381 @@
+// ------------------- Mixins  ------------------- //
+@mixin footer-more-blogs{
+	.view-header{
+			font-family: $font-bli;
+			font-size: $font-brandb-m;
+			margin-bottom: 2rem;
+			p{
+				font-family: $font-bli;
+				font-size: $font-brandb-m;
+			}
+		}
+	.view-content{
+		.views-field-field-video{
+			width: 100%;
+		}
+		img {
+			@media only screen and (max-width: 767px) {
+				margin: auto;
+			}
+		}
+		.views-field-title{
+			a{
+				font-family: $font-bli;
+				font-size: $font-baser-s;
+				color: $color_brand_dark;
+				margin: 2rem 0;
+				display: block;
+			}
+			span{
+				font-family: $font-bli;
+				font-size: $font-baser-s;
+				color: $color_brand_dark;
+				margin: 2rem 0;
+				display: block;
+			}
+		}
+	}
+	.view-footer{
+			a{
+			    display: inline-block;
+			    vertical-align: top;
+			    color: $color_brand;
+			    background-color: transparent;
+			    border-radius: 40px;
+			    padding: 7px 25px;
+			    border: 1px solid $color_brand;
+			    text-decoration: none;
+			    text-transform: uppercase;
+			    letter-spacing: 2px;
+			    position: relative;
+			    text-align: center;
+			    font: {
+			        family: $font-baseblack;
+			        size: 10px;
+			    }
+			    @include button-hover-after($color_brand);
+			    &::after{
+				    top: 0;
+				    left: 0;
+			    }
+			}
+		}
+	
+	@media only screen and (max-width: 767px) {
+		text-align: center;
+	    border-bottom: 1px solid $color_gray_10;
+	    max-width: 90%;
+	    margin: 4rem auto 0;
+	    padding-bottom: 4rem;
+	}
+}
+
+// ------------------- Carousel Home  ------------------- //
+.highlighted{
+	position: relative;
+	background: $color_gray_5;
+	    width: 100%;
+    float: left;
+	&::before,
+	&::after {
+    		content: "";
+    		background: $color_gray_5;
+    		display: block;
+    		//width: $bg-demasia-width;
+    		width: 100%;
+    		height: 100%;
+    		position: absolute;
+    		top: 0;
+    		left: 100%;
+     }
+     &::after {
+         left: auto;
+         right: 100%;
+     }
+     
+     /* Carosuel */
+	section[class*="block-views-blockcarrusel-block-"]{
+     
+     /* content carousel */
+	.jcarousel-wrapper{
+		background: none;
+	    margin: 0 auto;
+	    border: none;
+	    max-width: 100%;
+	    border-radius: 0;
+	    box-shadow: none;
+	    
+	    /* titulo carousel*/
+	    .views-field-title{
+		    position: relative;
+			top: -85%;
+			left: 45%;
+		    a{
+			    font-family: $font-brandb;
+			    font-size: $font-bl-xl;
+			    color: $color_brand_white;
+				text-decoration: none;
+				&:hover {
+					text-decoration: underline;
+				}
+		    }
+	    }
+	    /* description carousel*/
+	    .views-field-field-descripcion-del-carrusel{
+		    position: relative;
+		    top: -80%;
+		    left: 45%;
+		    max-width: 45rem;
+		    font-family: $font-serif-italic;
+			font-size:$font-baser-s;
+			color: $color_brand_white;
+	    }
+	    /* link carousel*/
+	    .views-field-field-enlace-del-carrusel{
+		    position: relative;
+			top: 0;
+		    a{
+			    @include button-md-white;
+				// max-width: 62px; // estorba en http://uat_ubosque.d8.seedoven.co/inscripciones
+				// width: 100%; // estorba en http://uat_ubosque.d8.seedoven.co/inscripciones
+				text-align: center;
+	
+				@media only screen and (max-width: $tablet) {
+					padding: 8px 10px !important;
+				}
+		    }
+	    }
+	    
+	    /* arrows carousel*/
+	    .jcarousel-control-prev, .jcarousel-control-next{
+		    background: $color_brand;
+		    top: 50%;
+		    @include box-shadow(none);
+		    text-shadow: none;
+	    }
+	    .jcarousel-control-prev{
+		    left: 2%;
+	    }
+	    .jcarousel-control-next{
+		    right: 2%;
+	    }
+	}
+	}
+	
+	/*botones entradas*/
+	section:nth-child(n+2){
+		background:$color_brand_white;
+	    padding: 1rem;
+	    min-height: 186px;
+	    text-align: center;
+	    margin:-9rem 1.6% 4rem;
+	    .field--name-field-icono{
+			 width: 5rem;
+			 margin: auto;
+	    }
+	    .field--name-field-titulo-del-trabajo{
+		    font-family: $font-brandb;
+		    font-size: $font-brandb-m;
+		    color: $color_brand;
+		    margin: 1rem 0;
+		    word-break: break-word;
+	    }
+	    .field--name-field-consultar-icono{
+		    a{
+			    @include buton-s-border-green;
+			    &::after{
+				    top: 0;
+				    left: 0;
+			    }
+
+				@media only screen and (max-width: 991px) {
+					padding: 5px 10px;
+				}
+				@media only screen and (max-width: $mobile) {
+					font-size: 9px;
+				}
+		    }
+	    }
+	    &:hover{
+		    background:$color_brand_orange;
+		    color: $color_brand_white;
+		    .field--name-field-icono{
+			    color: $color_brand_white;
+		    }
+		    .field--name-field-titulo-del-trabajo{
+			    color: $color_brand_white;
+		    }
+		    .field--name-field-consultar-icono{
+			    a{
+				    border-color: $color_brand_white;
+				    color: $color_brand_white;
+				    &::after{
+					    border-color: $color_brand_white;
+				    }
+			    }
+		    }
+	    }
+	    
+	    // responsive tablet
+		@media only screen and (max-width: 767px){
+			@include inline-block(top);
+			@include grid-porcentaje(5);
+			padding: 2rem;
+			margin: -9rem 4% 10rem;
+		}
+		
+		// responsive mobile
+		@media only screen and (max-width: 450px){
+			@include inline-block(top);
+			@include grid-porcentaje(10);
+			padding: 2rem 1rem;
+			   margin: -9rem 8% 10rem;
+			    min-height: auto;
+		}
+	}
+	
+	// botones entradas fix margin bottom
+	section:last-child{
+		 // responsive tablet
+		@media only screen and (max-width: 767px){
+			margin-bottom: 3rem;
+		}
+	}
+}
+
+// ------------------- Others Home  ------------------- //
+.region-content{
+	display: inline-block;
+    width: 100%;
+    
+    /* hides block de contenido portada */
+    > div[class*="views-element-container"]{
+		display: none;
+	}
+	
+	/* block events, video , blog*/
+	section[class*="block-views-blockeventos-block-"], section[class*="block-views-blockvideo-block-"], section[class*="block-views-blockblog-block-"]{
+		@include footer-more-blogs;
+	}
+	
+	section[class*="block-views-blockblog-block-"]{
+		@media only screen and (max-width: 767px){
+			border: 0px;
+			padding-bottom: 0;
+		}
+	}
+	
+	.block-mas-informacion{}
+	
+	/* banner final section */
+	section:last-child{
+		width: 100%;
+		display: table;
+	}
+}
+
+.region-content-second{
+	position: relative;
+		background: $color_gray_5;
+	    width: 100%;
+		float: left;
+		margin-top: 6rem;
+		&::before,
+		&::after {
+    		content: "";
+    		background: $color_gray_5;
+    		display: block;
+    		//width: $bg-demasia-width;
+    		width: 100%;
+    		height: 100%;
+    		position: absolute;
+    		top: 0;
+    		left: 100%;
+	 	}
+	    &::after {
+	         left: auto;
+	         right: 100%;
+			 }
+	/* hides block de contenido portada */
+	.block-mas-informacion{
+		width: 100%;
+		margin-top: 2rem;
+		display: table;
+		text-align: center;
+		position: relative;
+		&::before{
+		    content: url("../images/svg/white-triangle.svg");
+			position: absolute;
+			top: -2rem;
+			left: 46%;
+	    }
+		p{
+			font-family: $font-bli;
+			font-size: $font-bsb-l;
+			margin: 5rem 0 2rem;
+		}
+	}
+	
+	/*botones entradas*/
+	section:nth-child(n+2){
+	    padding: 1rem;
+	    min-height: 186px;
+	    text-align: center;
+	    margin: 2rem 19px 4rem;
+	    .field--name-field-icono{
+			 width: 5rem;
+			 margin: auto;
+	    }
+	    .field--name-field-titulo-del-trabajo{
+		    font-family: $font-brandb;
+		    font-size: $font-brandb-m;
+		    margin: 1rem 0;
+	    }
+	    .field--name-field-consultar-icono{
+		    a{
+			   @include buton-s-border-green;
+			   &::after{
+				    top: 0;
+				    left: 0;
+			    }
+
+				@media only screen and (max-width: $tablet) {
+					max-width: 300px;
+					padding: 7px 21px;
+				}
+				@media only screen and (max-width: $mobile) {
+					font-size: 9px;
+				}
+		    }
+	    }
+	    &::hover{
+		    background:$color_brand_orange;
+		    color: $color_brand_white;
+	    }
+	    
+	     // responsive tablets
+		@media only screen and (max-width: 767px){
+			@include inline-block(top);
+			@include grid-porcentaje(5);
+			padding: 2rem;
+			margin: 0rem 4% 0rem;
+		}
+		
+		// responsive mobile
+		@media only screen and (max-width: 450px){
+			@include inline-block(top);
+			@include grid-porcentaje(10);
+			    padding: 2rem 1rem;
+			   margin: 0 8%;
+			    min-height: auto;
+		}
+	}
+	
+	// botones entradas fix margin bottom
+	section:last-child{
+		 // responsive tablet
+		@media only screen and (max-width: 767px){
+			margin-bottom: 3rem;
+		}
+	}
+}

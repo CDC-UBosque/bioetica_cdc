@@ -1,0 +1,56 @@
+// ------------------- Boletines pagina  ------------------- //
+.page-node-type-page{
+	
+	.region-content{
+		section[class*="block-views-blockboletines-block-"]{
+			background: #fff;
+			padding: 4rem 3rem 2rem;
+		}
+	}
+	// Boletines views
+	.views-element-container{
+		.view-boletines{
+			
+			// Imagen boletin
+			.views-field-field-imagen-del-boletin{
+				img{
+					margin: auto;
+				}
+			}
+			
+			// Titulo boletin
+			.views-field-title{
+				text-align: center;
+				padding: 1rem 0;
+				.field-content{
+					font: $font-baser-s $font-bli;
+				}
+			}
+			
+			// Boton descargar
+			.views-field-field-pdf-del-boletin{
+				
+				// hide icon and size file
+				.file-icon, .file-size{
+					display: none;
+				}
+				
+				// button itself
+				.file-link{
+					a{
+						@include buton-s-green;
+					}
+				}
+				
+				.file>span{
+					background: none;
+					border: 0px;
+					color: $color-brand;
+					text-align: center;
+					padding: 0 0 3rem;
+				}
+			}
+		}
+	}
+	// End boletines views
+}

@@ -1,0 +1,5415 @@
+/// mixin grid
+@mixin grid($colNumber, $size: 80, $margin: 20, $padding: 0) {
+    $calculo: ($colNumber - 1) * $margin;
+    box-sizing: border-box;
+    @if( $colNumber==12) {
+        margin-right: 0;
+    }
+    @else {
+        margin-right: $margin * 1px;
+    }
+    width: ($colNumber*$size+$calculo) * 1px;
+    padding: $padding;
+}
+
+/// mixin grid mobile
+@mixin grid-mobile($colNumber, $size, $margin, $padding: 0) {
+    $calculo: ($colNumber - 1) * $margin;
+    box-sizing: border-box;
+    @if( $colNumber==2) {
+        margin-right: 0;
+    }
+    @else {
+        margin-right: $margin * 1px;
+    }
+    width: ($colNumber*$size+$calculo) * 1px;
+    padding: $padding;
+}
+
+//$size-device -> necesario para hacer calculo del tamaño del dispositivo
+@mixin grid-porcentaje($colNumber, $colSize: 80px, $margin: 10) {
+    $calculo: ($colNumber - 1) * $margin;
+    box-sizing: border-box;
+    width: (($colNumber) / 12)*100%;
+    @if( $colNumber==12) {
+        padding: 0 $margin*1px;
+        max-width: 100%;
+    }
+    @else {
+        padding: 0 $margin*1px;
+    }
+}
+
+/// Sets the environment up to create inline-block based grids
+/// @group Global
+@mixin ib-grid {
+    font-size: 0px;
+    >* {
+        font-size: 16px;
+    }
+}
+
+@mixin clearfix {
+    zoom: 1;
+    /* For IE 6/7 (trigger hasLayout) */
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+//Botones
+
+/* Boton transparente grande */
+
+@mixin buton-xl-transparent {
+    @include button-hover-after(white);
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    letter-spacing: 2px;
+    border-radius: 40px;
+    padding: 16px 25px;
+    border: 1px solid transparent;
+    color: white;
+    border-color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font: {
+        family: $font-baseblack;
+        size: 10px;
+    }
+}
+
+
+/* Boton transparente pequenio*/
+
+@mixin buton-s-transparent {
+    @include button-hover-after(white);
+    display: inline-block;
+    vertical-align: top;
+    letter-spacing: 2px;
+    border-radius: 40px;
+    padding: 7px 25px;
+    border: 1px solid transparent;
+    color: white;
+    border-color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    font: {
+        family: $font-baseblack;
+        size: 10px;
+    }
+}
+
+
+/* Boton blanco */
+
+@mixin buton-xl-white {
+    display: inline-block;
+    vertical-align: top;
+    color: $color_brand;
+    background-color: white;
+    border-radius: 40px;
+    padding: 16px 25px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: .3s ease-out all;
+    font: {
+        family: $font-baseblack;
+        size: 10px;
+    }
+    &:hover {
+        background-color: $color_brand_dark;
+    }
+}
+
+// Diseño: https://projects.invisionapp.com/d/main#/console/9895608/211649069/comments
+// Comentario: 12
+@mixin button-md-white {
+    @include buton-xl-white;
+    padding: 10px 32px 11px;
+}
+
+@mixin button-sm-white {
+    @include buton-xl-white;
+    padding: 7px 20px;
+}
+
+
+/* Boton verde */
+
+@mixin buton-xl-green {
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    background-color: $color_brand;
+    border-radius: 40px;
+    padding: 16px 25px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: .3s ease-out all;
+    font: {
+        family: $font-baseblack;
+        size: 10px;
+    }
+    &:hover {
+        background-color: $color_brand_dark;
+    }
+}
+
+
+/*Boton mediano verde*/
+
+@mixin buton-l-green {
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    background-color: $color_brand;
+    border-radius: 40px;
+    padding: 10px 30px 12px; //10px 25px 12px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: normal;
+    cursor: pointer;
+    transition: .3s ease-out all;
+    font: {
+        family: $font-baseblack;
+        size: 10px;
+    }
+    &:hover {
+        background-color: $color_brand_dark;
+    }
+}
+
+@mixin buton-m-green {
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    background-color: $color_brand;
+    border-radius: 40px;
+    padding: 15px 20px 16px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: normal;
+    cursor: pointer;
+    transition: .3s ease-out all;
+    font: {
+        family: $font-baseblack;
+        size: 10px;
+    }
+    &:hover {
+        background-color: $color_brand_dark;
+    }
+}
+
+
+/*Boton pequeño verde*/
+
+@mixin buton-s-green {
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    background-color: $color_brand;
+    border-radius: 40px;
+    padding: 7px 25px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: normal;
+    cursor: pointer;
+    transition: .3s ease-out all;
+    font: {
+        family: $font-baseblack;
+        size: 10px;
+    }
+    &:hover {
+        background-color: $color_brand_dark;
+    }
+}
+
+
+/*Boton mediano transparente*/
+
+@mixin buton-l-transparent {
+    @include button-hover-after(white);
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    background-color: transparent;
+    border-radius: 40px;
+    padding: 10px 25px;
+    border: 1px solid white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    line-height: normal;
+    cursor: pointer;
+    font: {
+        family: $font-baseblack;
+        size: 10px;
+    }
+}
+
+@mixin buton-xl {
+    padding: 14px 32px 14px;
+}
+
+@mixin buton-xl-transparent {
+    @include buton-l-transparent;
+    @include buton-xl;
+}
+
+
+/*Boton pequeño color blanco */
+
+@mixin buton-s-transparent {
+    @include button-hover-after(white);
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    background-color: transparent;
+    border-radius: 40px;
+    padding: 7px 25px;
+    border: 1px solid white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    cursor: pointer;
+    font: {
+        family: $font-baseblack;
+        size: 10px;
+    }
+}
+
+@mixin button-hover-after($color) {
+    &::after {
+        content: "";
+        border-radius: 40px;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        border: 2px solid $color;
+        opacity: 0;
+        visibility: 0;
+        transition: .3s ease-out all;
+    }
+    &:hover {
+        &::after {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+
+/*Boton pequeño de color y borde verde*/
+
+@mixin button-m-border-green {
+    @include button-hover-after($color_brand);
+    display: inline-block;
+    vertical-align: top;
+    color: $color_brand;
+    background-color: transparent;
+    border-radius: 40px;
+    padding: 12px 25px;
+    border: 1px solid $color_brand;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    font: {
+        family: $font-baseblack;
+        size: 10px;
+    }
+}
+
+@mixin button-s-border-green {
+    @include button-hover-after($color_brand);
+    display: inline-block;
+    vertical-align: top;
+    color: $color_brand;
+    background-color: transparent;
+    border-radius: 40px;
+    padding: 7px 25px;
+    border: 1px solid $color_brand;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+	line-height: normal;
+    font: {
+        family: $font-baseblack;
+        size: 10px;
+    }
+}
+
+@mixin button-xl-border-green {
+    @include button-m-border-green;
+    @include buton-xl;
+}
+
+
+/*Boton pequeño de color y borde verde*/
+
+@mixin buton-s-border-green {
+    @include button-hover-after($color_brand);
+    display: inline-block;
+    vertical-align: top;
+    color: $color_brand;
+    background-color: transparent;
+    border-radius: 40px;
+    padding: 7px 25px;
+    border: 1px solid $color_brand;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    text-align: center;
+    font: {
+        family: $font-baseblack;
+        size: 10px;
+    }
+}
+
+@mixin buton-s-border-white {
+    @include button-hover-after(white);
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    background-color: transparent;
+    border-radius: 40px;
+    padding: 7px 25px;
+    border: 1px solid white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    text-align: center;
+    font: {
+        family: $font-baseblack;
+        size: 10px;
+    }
+}
+
+@mixin bt-line-green-xl {
+    @include button-hover-after($color_brand);
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    color: $color_brand;
+    background-color: transparent;
+    border-radius: 40px;
+    padding: 15px 25px;
+    border: 1px solid $color_brand;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    cursor: pointer;
+    font: {
+        family: $font-baseblack;
+        size: 10px;
+    }
+}
+
+// boton transparente de borde verte
+@mixin bt-line-green-l {
+    @include button-hover-after($color_brand);
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    color: $color_brand;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 40px;
+    padding: 13px 25px;
+    border: 1px solid $color_brand;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font: {
+        family: $font-baseblack;
+        size: 10px;
+    }
+}
+
+// https://projects.invisionapp.com/d/main#/console/9895608/211649069/comments/77245238
+@mixin link-green {
+    @include inline-block(top);
+    font-family: $font-baseb;
+    font-weight: normal;
+    font-size: 12px;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    line-height: 100%;
+    text-decoration: none;
+    color: $color_brand;
+    transition: border 500ms ease;
+}
+
+@mixin link-white {
+    @include inline-block(top);
+    font-family: $font-baseb;
+    font-weight: normal;
+    font-size: 12px;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    line-height: 100%;
+    text-decoration: none;
+    color: white;
+    transition: border 500ms ease;
+}
+
+@mixin link-gray-with-underline-green {
+    text-decoration: underline $color-brand;
+    &:hover {
+        color: $color-brand;
+    }
+}
+
+@mixin underline-hover {
+    border-bottom: 1px solid rgba(123, 193, 66, 0);
+    transition: border 500ms ease;
+    &:hover {
+        //text-decoration: underline $color-brand;
+        border-bottom: 1px solid rgba(123, 193, 66, 1);
+        opacity: 1;
+        cursor: pointer;
+    }
+}
+
+/// Items float with display-block
+/// @group Global
+/// @param {position} $position-vertical Position vertical top-bottom-middle
+@mixin inline-block($position-vertical: top) {
+    display: inline-block;
+    vertical-align: $position-vertical;
+}
+
+@mixin border-radius-sm {
+    border-radius: 5px;
+}
+
+// SCOPE: pages/content-sidebar
+// URL: facultad/creacion-comunicacion
+@mixin sidebar-block-bottom {
+    margin-bottom: 5px;
+}
+
+// SCOPE: pages/content-sidebar
+// URL: facultad/creacion-comunicacion
+@mixin sidebar-block-title($block-title) {
+    #{$block-title} {
+        @include title_latobold_m;
+        padding: 18px;
+        margin: 0;
+        text-transform: uppercase;
+    }
+}
+
+// SCOPE: pages/content-sidebar
+// URL: facultad/creacion-comunicacion
+@mixin sidebar-block-content($block-content) {
+    #{$block-content} {
+        padding: 8px 18px 5px;
+        background-color: $color_gray_2;
+    }
+}
+
+@mixin border-line-color {
+    border: 1px solid $color_gray_20;
+}
+
+//estilos de fuentes:
+@mixin font-brandb-xxl {
+    font: {
+        family: $font-brandb;
+        size: $font-brandb-xxl;
+    }
+}
+
+@mixin font-brandb-l {
+    font: {
+        family: $font-brandb;
+        size: $font-brandb-l;
+    }
+}
+
+@mixin font-brandb-m {
+    font: {
+        family: $font-brandb;
+        size: $font-brandb-m;
+    }
+}
+
+@mixin font-brandb-xs {
+    font: {
+        family: $font-brandb;
+        size: $font-brandb-xs;
+    }
+}
+
+@mixin font-bsb-xl {
+    font: {
+        family: $font-bsb;
+        size: $font-bsb-xl;
+    }
+}
+
+@mixin font-bsb-m {
+    font: {
+        family: $font-bsb;
+        size: $font-bsb-m;
+    }
+}
+
+@mixin font-bl-xl {
+    font: {
+        family: $font-bl;
+        size: $font-bl-xl;
+    }
+}
+
+@mixin font-bl-l {
+    font: {
+        family: $font-bl;
+        size: $font-bl-l;
+    }
+}
+
+@mixin font-bl-m {
+    font: {
+        family: $font-bl;
+        size: $font-bl-m;
+    }
+}
+
+@mixin font-bl-s {
+    font: {
+        family: $font-bl;
+        size: $font-bl-s;
+    }
+}
+
+@mixin font-baseb-xs {
+    font: {
+        family: $font-baseb;
+        size: $font-baseb-xs;
+    }
+}
+
+@mixin font-baser-m {
+    font: {
+        family: $font-baser;
+        size: $font-baser-m;
+    }
+}
+
+@mixin font-baser-s {
+    font: {
+        family: $font-baser;
+        size: $font-baser-s;
+    }
+}
+
+@mixin font-baser-xs {
+    font: {
+        family: $font-baser;
+        size: $font-baser-xs;
+    }
+}
+
+@mixin acherus_grotesqueultralight ($size) {
+    font: {
+        family: 'acherus_grotesqueultralight';
+        size: $size;
+    }
+}
+
+@mixin acherus_grotesquebold ($size) {
+    font: {
+        family: 'acherus_grotesquebold';
+        size: $size;
+    }
+}
+
+@mixin acherus_grotesqueregular ($size) {
+    font: {
+        family: 'acherus_grotesqueregular';
+        size: $size;
+    }
+}
+
+@mixin acherus_bold ($size) {
+    font: {
+        family: $font-bsb;
+        size: $size;
+    }
+}
+
+@mixin acherus_black ($size) {
+    font: {
+        family: $font-brandb;
+        size: $size;
+    }
+}
+
+@mixin acherus_medium ($size) {
+    font: {
+        family: 'acherus_grotesquemedium';
+        size: $size;
+    }
+}
+
+@mixin pt_serifitalic ($size) {
+    font: {
+        family: 'pt_serifitalic';
+        size: $size;
+    }
+}
+
+@mixin latoregular ($size) {
+    font: {
+        family: 'latoregular';
+        size: $size;
+    }
+}
+
+@mixin latobold ($size) {
+    font: {
+        family: 'latobold';
+        size: $size;
+    }
+}
+
+@mixin latoblack ($size) {
+    font: {
+        family: 'latoblack';
+        size: $size;
+    }
+}
+
+@mixin latoitalic ($size) {
+    font: {
+        family: 'latoitalic';
+        size: $size;
+    }
+}
+
+@mixin latolight ($size) {
+    font: {
+        family: 'latolight';
+        size: $size;
+    }
+}
+
+@mixin punto-title {
+    font-size: 23px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+    top: 35px;
+    width: 5px;
+    height: 5px;
+    border-radius: 20px;
+    background: $color_gray_60;
+}
+
+// DESC: construye los encabezados que tiene title y a veces pretitle, vienen con un puntito gris
+// DISEÑO: https://projects.invisionapp.com/d/main#/console/9895991/211574770/comments/76541835
+// Anotación: 1
+// Se repite diseños varios: https://projects.invisionapp.com/d/main#/console/9907846/212033497/comments etc
+// Ej: @include intro-title('.intro', 'h2', '.intro + h2', 40px);
+// Los 3 primeros argumentos son clases, el último es el padding bottom
+// Si solo quieres poner punto al primer h2
+// intro-title('.null', ' > h2', '.null');
+@mixin intro-title($intro, $title, $sibling, $m-bottom: 30px) {
+    position: relative;
+    // Texto negro grande y bold
+    #{$title} {
+        text-align: center;
+        padding-top: 55px;
+        margin-bottom: $m-bottom; // Default padding-bottom
+        position: relative;
+        &::before {
+            @include punto-title;
+            content: "";
+        }
+
+		// Agregados mucho después, podría estropear otras secciones
+		@media only screen and (max-width: $tablet) {
+			font-size: 28px;
+			margin-bottom: 15px;
+		}
+    }
+    // texto pequeño y gris, encima de $title
+    #{$intro} {
+        @include pretitle;
+		position: relative;
+		padding-top: 55px;
+		text-align: center;
+		display: block;
+        /*width: 100%;
+        display: block;
+        text-align: center;
+        position: absolute;
+        left: 0;
+        top: 55px; //52px;*/
+		
+        &::before {
+            @include punto-title;
+            content: "";
+	        position: absolute;
+	        left: 0;
+			right: 0;
+			margin: auto;
+        }
+    }
+    // Si $intro está presente, $empujar el padding-top de $title
+    // Ej: .intro + .title
+    #{$sibling} {
+        padding-top: 0; //68px;
+
+		&::before {
+			display: none;
+		}
+    }
+}
+
+
+@mixin intro-title--($intro, $title, $sibling, $m-bottom: 30px) {
+    position: relative;
+    // Texto negro grande y bold
+    #{$title} {
+        text-align: center;
+        padding-top: 55px;
+        margin-bottom: $m-bottom; // Default padding-bottom
+        position: relative;
+        &::before {
+            @include punto-title;
+            content: "";
+        }
+
+		// Agregados mucho después, podría estropear otras secciones
+		@media only screen and (max-width: $tablet) {
+			font-size: 28px;
+			margin-bottom: 15px;
+		}
+    }
+    // texto pequeño y gris, encima de $title
+    #{$intro} {
+        @include pretitle;
+        width: 100%;
+        display: block;
+        text-align: center;
+        position: absolute;
+        left: 0;
+        top: 55px; //52px;
+    }
+    // Si $intro está presente, $empujar el padding-top de $title
+    // Ej: .intro + .title
+    #{$sibling} {
+        padding-top: 68px;
+    }
+}
+
+
+// TEXTOS
+// fuentes title y pretitle
+@mixin pretitle {
+    font-family: $font-baseb;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 2px;
+    color: $color_gray_60;
+    text-transform: uppercase;
+}
+
+@mixin title {
+    font-family: $font-brandb;
+    font-size: 33px;
+    line-height: 36px;
+    letter-spacing: -0.5px;
+    padding-bottom: 20px;
+}
+
+@mixin text-day-date {
+    margin-top: -5px;
+    margin-bottom: 10px;
+    color: $color_gray_80;
+    font: {
+        //family: $font-brandextra; //$font-brandb;
+        family: $font-brandb;
+        size: 30px;
+    }
+    line-height: 36px;
+    letter-spacing: -0.3px;
+}
+
+@mixin text-month-date {
+    @include pretitle;
+    color: $color_gray_80 !important;
+    font-size: 9px;
+    line-height: 12px;
+    letter-spacing: 1.8px;
+}
+
+@mixin title_light_green {
+    color: $color_brand;
+    font: {
+        family: $font-bl;
+        size: 23px;
+    }
+    letter-spacing: 0.5px;
+}
+
+@mixin title_light_acherus_l {
+    font: {
+        family: $font-bl;
+        size: 28px;
+    }
+    line-height: 33px;
+    @media only screen and (max-width: $mobile) {
+        font-size: 22px; // necesario en http://ubosque.d8.seedlabs.co/becas-estimulos
+    }
+}
+
+@mixin title_light_acherus_lms {
+    font: {
+        family: $font-bl;
+        size: 30px;
+    }
+    line-height: 35px;
+}
+
+@mixin title_light_acherus_lm {
+    font: {
+        family: $font-bl;
+        size: 33px;
+    }
+    line-height: 40px;
+}
+
+@mixin title_light_acherus_lm_line_height_medium {
+    font: {
+        family: $font-bl;
+        size: 33px;
+    }
+    line-height: 35px;
+}
+
+@mixin title_light_acherus_xl {
+    font: {
+        family: $font-bl;
+        size: 39px;
+    }
+    line-height: 33px;
+}
+
+@mixin title_light_green_l {
+    color: $color_brand;
+    font: {
+        family: $font-bl;
+        size: 28px;
+    }
+    line-height: 33px;
+}
+
+@mixin title_green_latobold_s {
+    color: $color_brand;
+    font-family: $font-baseb;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 2px;
+}
+
+@mixin title_latobold_m {
+    font-family: $font-baseb;
+    font-size: 11px;
+    line-height: 12px;
+    letter-spacing: 2px;
+}
+
+@mixin title_latobold_l {
+    font-family: $font-baseb;
+    font-size: 17px;
+    line-height: 20px;
+}
+
+@mixin title_acherusbold_l {
+    font: {
+        family: $font-bsb;
+        size: 31px;
+    }
+}
+
+@mixin title_acherusblack_m {
+    font: {
+        family: $font-brandb;
+        size: 20px;
+    }
+}
+
+@mixin title_acherusblack_s {
+    font: {
+        family: $font-brandb;
+        size: 18px;
+    }
+    line-height: 24px;
+}
+
+@mixin title_green_latoregular_m {
+    color: $color_brand;
+    font-family: $font-baser;
+    font-size: 11px;
+    line-height: 12px;
+    letter-spacing: 2px;
+}
+
+@mixin title-green-s {
+    color: $color_brand;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font: {
+        family: $font-baseb;
+        size: 12px;
+    }
+}
+
+@mixin small-pretitle-italic {
+    @include pt_serifitalic (12px);
+    color: $color_gray_60;
+}
+
+@mixin title_tabs {
+    @include pretitle;
+    font-size: 13px;
+}
+
+@mixin title_tabs_active {
+    font-family: $font-brandb;
+    letter-spacing: 1px;
+    color: $color_text;
+}
+
+@mixin item-menu {
+    color: $color_gray_80;
+    letter-spacing: 0.2px;
+    font: {
+        family: $font-bsb;
+        size: 13px;
+    }
+}
+
+@mixin item-menu-active {
+    @include latoblack(12px);
+    letter-spacing: 1px;
+    color: $color_gray_80;
+}
+
+@mixin item-submenu {
+    color: $color_gray_60;
+    letter-spacing: 1px;
+    line-height: 13px;
+    font: {
+        family: $font-baser;
+        size: 11px;
+    }
+}
+
+//mixins textos
+// https://projects.invisionapp.com/d/main#/console/9896592/211576790/comments
+// Comentario: 2
+@mixin cita {
+    //@include acherus_grotesqueregular(28px);
+    font-family: $font-bl;
+    font-size: 28px;
+    line-height: 30px;
+    letter-spacing: -0.5px;
+    @media only screen and (max-width: $tablet) {
+        font-size: 22px;
+        letter-spacing: -0.39px;
+    }
+}
+
+@mixin listas {
+    @include latoregular (16px);
+    line-height: 22px;
+}
+
+//mixin paragraphs
+@mixin paragraphs_medium ($family:"") {
+    font: {
+        @if $family !="" {
+            family: $family;
+        }
+        size: 14px;
+    }
+    line-height: 17px;
+}
+
+@mixin paragraphs_medium_l ($family:"") {
+    font: {
+        @if $family !="" {
+            family: $family;
+        }
+        size: 15px;
+    }
+    line-height: 22px;
+}
+
+@mixin paragraphs_large ($family:"") {
+    font: {
+        @if $family !="" {
+            family: $family;
+        }
+        size: 16px;
+    }
+    line-height: 22px;
+    color: $color_gray_80;
+}
+
+@mixin paragraphs_extralarge ($family:"") {
+    font: {
+        @if $family !="" {
+            family: $family;
+        }
+        size: 17px;
+    }
+    line-height: 23px;
+    color: $color_gray_80;
+}
+
+@mixin paragraphs_extralarge_xl ($family:"") {
+    font: {
+        @if $family !="" {
+            family: $family;
+        }
+        size: 18px;
+    }
+    line-height: 26px;
+    color: $color_gray_80;
+}
+
+// links
+@mixin link-text {
+    @include underline-hover;
+    color: $color_brand;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font: {
+        family: $font-baseb;
+        size: 12px;
+    }
+}
+
+// URL: home
+// SCOPE: blocks/home--news, 
+// DESC: dependiente del @mixin views-row-cuadrado-titular;
+@mixin views-row-cuadrado-titular-wrapper($view-content) {
+    #{$view-content} {
+        @include ib-grid;
+    }
+}
+
+// URL: home, /facultad/creacion-comunicacion, 
+// SCOPE: blocks/home--news, 
+// DISEÑO: https://projects.invisionapp.com/d/main#/console/9895991/211574770/comments/76541945
+// Diseño anotación 2
+@mixin views-row-cuadrado-titular($views-row) {
+    #{$views-row} {
+        @include inline-block(top);
+        font-size: 16px;
+        //max-width: 280px;
+        width: 33.33%;
+        padding: 0 10px;
+        position: relative;
+        box-sizing: border-box;
+        &:nth-last-child(1) {
+            margin-right: 0
+        }
+        img {
+            display: block;
+        }
+        .views-field-nothing {
+            top: 27%;
+            margin-left: 13%;
+            position: absolute;
+        }
+        .content-news {
+            margin: 0 auto;
+            max-width: 200px;
+            display: block;
+        }
+        .content-news--taxonomy {
+            @include pretitle;
+            padding-bottom: 18px;
+            a {
+                color: white;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+        }
+        .content-news--title {
+            @include cuadrado-title;
+            padding-bottom: 20px;
+            color: white;
+        }
+        .content-news--links-read-more {
+            a {
+                @include link-text;
+            }
+        }
+    }
+}
+
+@mixin cuadrado-title {
+    font: {
+        family: $font-bsb;
+        size: 20px;
+    }
+    line-height: 20px;
+    text-decoration: none;
+    * {
+        @include inherit;
+    }
+}
+
+@mixin raya-verde-gris {
+    // Imita ser el border bottom
+    &::after {
+        content: "";
+        background: $color_brand_dark_15;
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        visibility: visible;
+        z-index: 9;
+    }
+    // Raya verde que se pone encima del border-bottom
+    &::before {
+        content: '';
+        background: $color_brand;
+        width: 43px;
+        height: 5px;
+        display: inline-block;
+        position: absolute;
+        bottom: 0; //-1.3px;
+        left: 0;
+        z-index: 10;
+    }
+}
+
+// URL: home
+// SCOPE: blocks/home--events
+// DISEÑO: https://projects.invisionapp.com/d/main#/console/9895991/211574770/comments/76749735
+// Diseño anotación 7
+@mixin views-row-list-date($views-row, $date, $category, $title) {
+    #{$views-row} {
+        //border-bottom: 1px solid #D7D9D0; //$color_gray_50;
+        @include raya-verde-gris;
+        @include inline-block(top);
+        // margin-bottom: 7px;
+        padding-bottom: 6px;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        padding-top: 11px;
+        position: relative;
+        z-index: 20;
+        .text-content {
+            overflow: hidden;
+            padding-bottom: 1px;
+        }
+        &:hover {
+            .js-hover-date {
+                top: -11px;
+            }
+            #{$title} {
+                a {
+                    border-bottom: 1px solid rgba(123, 193, 66, 1);
+                }
+            }
+        }
+        #{$category} {
+            @include pretitle;
+            overflow: hidden;
+            margin-bottom: 5px;
+            text-decoration: none;
+            text-transform: uppercase;
+            display: block;
+            a {
+                @include inherit;
+                display: block;
+            }
+        }
+        #{$title} {
+            //overflow: hidden;
+            font-family: $font-baser;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 19px;
+            margin: 0;
+            color: $color_gray_80;
+            min-height: 46px;
+            overflow: hidden;
+            * {
+                @include inherit;
+            }
+            a {
+                border-bottom: 1px solid rgba(123, 193, 66, 0);
+                transition: border 500ms ease;
+            }
+        }
+    }
+}
+
+@mixin views-row-list-date-hover($views-row, $date) {
+    #{$views-row} {
+        &:hover {
+            &:before {
+                content: '';
+                background: $color_brand;
+                width: 43px;
+                height: 112%;
+                display: inline-block;
+                position: absolute;
+                bottom: -2.3px;
+                left: 0;
+                z-index: 1;
+                display: block;
+                transition: .3s ease-out all;
+            }
+            #{$date} {
+                z-index: 2;
+                position: relative;
+                color: white;
+                * {
+                    z-index: 2;
+                    position: relative;
+                    color: inherit;
+                }
+            }
+        }
+    }
+}
+
+// URL: /facultad/creacion-comunicacion, 
+// SCOPE: faculty--academic-calendar
+// DISEÑO: https://projects.invisionapp.com/d/main#/console/9895991/211574770/comments/76749735
+// Diseño anotación 7
+@mixin views-row-list-date-italic($views-row, $date, $category, $title) {
+    // Ocultamos el borde y raya colorida del último elemento
+    // Hacemos que los last-child que al mismo tiempo sean first-child muestren la raya colorida
+    #{$views-row} {
+        // border-bottom: 1px solid #D7D9D0; //$color_gray_50;
+        display: inline-block;
+        margin-bottom: 5px;
+        padding-bottom: 0px;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        .js-hover-date {
+            padding-top: 0;
+        }
+        &:hover {
+            #{$title} a {
+                border-bottom: 1px solid rgba(123, 193, 66, 1);
+                opacity: 1;
+            }
+            .js-hover-date {
+                top: 0;
+            }
+        }
+        &::after {
+            content: "";
+            background: #D7D9D0;
+            height: 1px;
+            width: 100%;
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            z-index: 2;
+        }
+        &::before {
+            content: '';
+            background: $color_brand;
+            width: 43px;
+            height: 5px; //4px;
+            display: inline-block;
+            position: absolute;
+            bottom: 0; //-3px;
+            left: 0;
+            z-index: 5;
+        }
+        // Ocultamos el borde y la raya de los últimos elementos
+        &:last-child {
+            border: 0;
+            &::before {
+                display: none;
+            }
+        }
+        // Hacemos visible la raya cuando el último elemento es el primero al mismo tiempo
+        &:first-child:last-child {
+            border: 0;
+            &::before {
+                display: inline-block;
+            }
+        }
+        #{$date} {
+            float: left;
+            width: 50px;
+            text-transform: uppercase;
+            .item-day {
+                @include title;
+            }
+            .item-month {
+                font-size: 10px;
+            }
+        }
+        #{$category} {
+            overflow: hidden;
+            a {
+                @include pretitle;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+        }
+        #{$title} {
+            @include pt_serifitalic (11px);
+            color: $color_gray_80;
+            line-height: 16px;
+            padding-right: 65px;
+            //overflow: hidden;
+            text-decoration: none;
+            * {
+                @include inherit;
+            }
+            a {
+                border-bottom: 1px solid rgba(123, 193, 66, 0);
+                transition: border 500ms ease;
+            }
+        }
+    }
+}
+
+// SCOPE: pages/page-faculties, 
+@mixin page-specific-color($color, $hover) {
+    .block.search-professor,
+    .block.conectate-ueb,
+    .product-basic-feature-content-large,
+    .informacion-adicional,
+    .informacion-adicional::before,
+    .informacion-adicional::after,
+    .informacion-adicional .tabMakerTab:first-child::before,
+    .informacion-adicional .tabMakerTab:nth-last-of-type(2)::before,
+    .informacion-adicional .field--name-field-horarios-del-programa,
+    .views-row-list-date-block .views-row::before,
+    .views-row-list-date-block .js-hover-date,
+    .field--name-field-horarios-del-programa,
+    .block-views.block-views-blockeventos-facultad-block-7,
+    .main-image,
+    .main-image .text-content {
+        background-color: $color;
+    }
+    .group.group--type-facultades .group-buttons .field--type-link a {
+        background-color: $color;
+        &:hover {
+            background-color: $hover;
+        }
+    }
+    .block.search-professor,
+    .block.conectate-ueb {
+        border-color: $color !important;
+    }
+    .informacion-adicional .node--type-informacion-adicional-pregrado a {
+        color: $color;
+        &:hover {
+            color: $color;
+            background-color: white;
+        }
+    }
+}
+
+//cuadros de color y texto
+@mixin board-text-image($color_background, $color, $margin, $padding_bottom) {
+    color: $color;
+    background-color: $color_background;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    margin-bottom: 25px;
+    .field--type-image {
+        margin-top: $margin;
+    }
+    .field--name-field-block-title-h2 {
+        @include acherus_black (33px);
+        padding-left: 70px;
+        padding-right: 70px;
+    }
+    .field--name-field-enlace {
+        padding-bottom: $margin;
+    }
+}
+
+// Usar con views-row-caja-sencilla
+// Debe contener el padre del views-row-caja-sencilla
+@mixin views-content-caja-sencilla($view-content) {
+    #{$view-content} {}
+}
+
+// URL: http://ubosque.seedlabs.co/facultad/creacion-comunicacion
+// SCOPE: 
+// DISEÑO: https://projects.invisionapp.com/d/main#/console/9907846/212033388/comments/76758399
+// Diseño nota: 1
+@mixin views-row-caja-sencilla($views-row) {
+    #{$views-row} {}
+}
+
+// URL: /facultad/creacion-comunicacion
+// SCOPE: blocks/block-views
+// DESC: Este modelo viene de las últimas hojas del manual de estilos y del diseño
+// DISEÑO: https://projects.invisionapp.com/d/main#/console/9907846/212033388/comments/76767460
+// Diseño comentario: 2
+// Está en las últimas hojas del manual de estilos
+@mixin product-basic-feature-content($wrapper, $category, $title, $subtitle, $body, $link) {
+    #{$wrapper} {
+        overflow: hidden;
+        padding: 24px 19px;
+        #{$category} {
+            @include pretitle;
+            font-family: $font-baser; // debería ser $font-baserb, pero en home se ve muy grueso
+            text-decoration: none;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            margin-top: -3px;
+            line-height: 100%;
+            * {
+                text-decoration: inherit;
+                color: inherit;
+            }
+        }
+        .text-content {
+            overflow: hidden;
+            padding: 24px 19px;
+        }
+        #{$title} {
+            //@include font-brandb-m;
+            font-family: $font-bsb;
+            font-size: $font-brandb-m; // debería ser $font-brandb, pero en el home, se ve muy grueso
+            margin-bottom: 15px;
+            * {
+                @include inherit;
+            }
+        }
+        #{$subtitle} {
+            font-family: $font-serif-italic;
+            font-style: normal;
+            font-size: $font-serif-s;
+            //margin-top: -10px;
+            margin-bottom: 21px;
+            word-wrap: break-word;
+            * {
+                @include inherit;
+            }
+        }
+        #{$body} {
+            font-size: $font-baser-s;
+            line-height: 125%;
+            * {
+                @include inherit;
+            }
+        }
+        #{$link} {
+            margin-top: 10px;
+            a {
+                @include link-text;
+                // color: $color_brand;
+                // font-size: $font-brandb-xs; // yo pienso que es 10px y no 11px
+                // text-transform: uppercase;
+                // text-decoration: none;
+                padding-bottom: 1px;
+                // border-bottom: 1px solid $color_brand;
+                line-height: 100%;
+            }
+        }
+    }
+}
+
+@mixin product-full-feature-content($wrapper, $image, $category, $title, $subtitle, $body, $link) {
+    @include product-basic-feature-content($wrapper, $category, $title, $subtitle, $body, $link);
+    #{$wrapper} {
+        background-color: $color_gray_10;
+        padding: 0;
+        &:hover {
+            background-color: white;
+        }
+        #{$image} {
+            float: left;
+            position: relative;
+            img {
+                display: block;
+            }
+        }
+        .text-content {
+            overflow: hidden;
+            padding: 24px 19px;
+        }
+    }
+}
+
+@mixin icon($image-url, $item) {
+    #{$item} {
+        &:before {
+            content: url('../images/' + $image-url);
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 11px;
+        }
+    }
+}
+
+// Create placeholder mixin
+@mixin placeholder($color,
+$family:"",
+$letter-spacing:"",
+$size:"") {
+    &::-webkit-input-placeholder {
+        color: $color;
+        @if $family !="" {
+            font-family: $family;
+        }
+        @if $letter-spacing!="" {
+            letter-spacing: $letter-spacing;
+        }
+        @if $size!="" {
+            font-size: $size;
+        }
+    }
+    &:-moz-placeholder {
+        color: $color;
+        @if $family !="" {
+            font-family: $family;
+        }
+        @if $letter-spacing!="" {
+            letter-spacing: $letter-spacing;
+        }
+        @if $size!="" {
+            font-size: $size;
+        }
+    }
+    &::-moz-placeholder {
+        color: $color;
+        @if $family !="" {
+            font-family: $family;
+        }
+        @if $letter-spacing!="" {
+            letter-spacing: $letter-spacing;
+        }
+        @if $size!="" {
+            font-size: $size;
+        }
+    }
+    &:-ms-input-placeholder {
+        color: $color;
+        @if $family !="" {
+            font-family: $family;
+        }
+        @if $letter-spacing!="" {
+            letter-spacing: $letter-spacing;
+        }
+        @if $size!="" {
+            font-size: $size;
+        }
+    }
+}
+
+//estilo con pretitle, title, y boton
+@mixin content-title-light($pretitle,
+$title,
+$button) {
+    #{$pretitle} {
+        @include pretitle;
+        padding-bottom: 10px;
+    }
+    #{$title} {
+        @include acherus_grotesqueultralight(33px);
+        line-height: 35px;
+        letter-spacing: -0.5px;
+        padding-bottom: 25px;
+        color: $color_text;
+    }
+    #{$button} {
+        @include buton-s-border-green;
+        @media only screen and (max-width: $tablet) {
+            padding: 8px 15px;
+        }
+        @media only screen and (max-width: $mobile) {
+            padding: 8px 40px;
+        }
+    }
+}
+
+//estructura de bloque de texto
+//estructura pretitulo, titulo y botón
+// URL: /facultad/creacion-comunicacion
+// SCOPE: blocks/block
+// DESC: Este modelo viene de las últimas hojas del manual de estilos y del diseño
+// DISEÑO: https://projects.invisionapp.com/d/main#/console/9907846/212033388/comments/76999942
+// Diseño comentario: 7
+@mixin font-block-text ($pretitle,
+$title) {
+    #{$pretitle} {
+        @include pretitle;
+        text-decoration: none;
+    }
+    #{$title} {
+        @include acherus_black(33px);
+    }
+}
+
+//estructura pretitulo, titulo y botón
+// URL: /facultad/creacion-comunicacion
+// SCOPE: blocks/block
+// DESC: Este modelo viene de las últimas hojas del manual de estilos y del diseño
+// DISEÑO: https://projects.invisionapp.com/d/main#/console/9907846/212033388/comments/76999942
+// Diseño comentario: 7
+@mixin structure-pretitle-button ($container,
+$pretitle,
+$button) {
+    #{$container} {
+        padding: 30px 20px;
+        position: relative;
+    }
+    #{$pretitle} {
+        padding-bottom: 10px;
+    }
+    #{$button} {
+        position: absolute;
+        bottom: 20px;
+    }
+}
+
+@mixin structure-text-img-background($container,
+$text,
+$button) {
+    #{$container} {
+        position: relative;
+    }
+    #{$text} {}
+    #{$button} {}
+}
+
+@mixin inherit {
+    font-family: inherit;
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    text-decoration: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+@mixin field-noticias-title {
+    font-family: $font-brandb;
+    color: $color_gray_80;
+    font-size: 20px;
+    letter-spacing: -0.1px;
+    line-height: 20px;
+}
+
+// URL: /centro-informacion
+// File: pages/page-centro-informacion
+// https://projects.invisionapp.com/d/main#/console/9896592/211576790/preview
+// Comentario: 1
+@mixin teaser-noticias($views-row,
+$image,
+$category,
+$title,
+$body,
+$link,
+$text-content: '.text-content') {
+    #{$views-row} {
+        #{$image} {
+            a {
+                display: block;
+            }
+            img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+        }
+        #{$category} {
+            font-family: $font-baseb;
+            font-weight: normal;
+            color: $color_gray_60;
+            font-size: 10px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            //letter-spacing: 2;
+            //line-height: 12;
+            a {
+                @include inherit;
+            }
+        }
+        #{$title} {
+            @include field-noticias-title;
+            margin-bottom: 10px;
+            @media only screen and (max-width: $tablet) {
+                font-size: 20px;
+                line-height: 20px;
+            }
+
+            * {
+                @include inherit;
+            }
+        }
+        #{$body} {
+            font-family: $font-baser;
+            font-size: 16px;
+            line-height: 22px;
+            margin-bottom: 15px;
+            * {
+                @include inherit;
+            }
+        }
+        #{$link} {
+            a {
+                @include link-text;
+            }
+        }
+        #{$text-content} {
+            background-color: $color_gray_10;
+            padding: 20px;
+        }
+        .image-content {
+            position: relative;
+            overflow: hidden;
+        }
+        .item-month-day {
+            // .field--name-field-fecha-publicacion {
+            // .field--name-field-fecha-publicacion, .field--name-field-publicacion-relato {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 0 0 10px 15px;
+            box-sizing: border-box;
+            @media only screen and (max-width: $mobile) {
+                padding-left: 30px;
+            }
+            * {
+                color: white !important;
+            }
+        }
+    }
+}
+
+// URL: /centro-informacion/bosque-medios
+@mixin zoom($wrapper,
+$field) {
+    #{$wrapper} {
+        #{$field} {
+            position: relative;
+            &::after {
+                content: url('../images/centro-informacion/zoom.png');
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+                z-index: 10;
+                display: block;
+            }
+        }
+    }
+}
+
+// DESC: Listado de videos
+// URL: /centro-informacion/bosque-responde
+// File: pages/node-type-video
+// https://projects.invisionapp.com/d/main#/console/9896592/211577143/comments
+// Comentario: 1
+// Display example: http://ubosque.d8.seedlabs.co/admin/structure/types/manage/video/display/teaser
+@mixin teaser-videos($views-row,
+$image,
+$title,
+$body,
+$text-content: '.text-content') {
+    #{$views-row} {
+        @media only screen and (max-width: $tablet) {
+            margin-bottom: 30px;
+        }
+        #{$image} {
+            margin-bottom: 11px;
+            img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+        }
+        #{$title} {
+            @include desp-heading;
+            margin-bottom: 8px;
+            font-family: $font-brandb;
+            * {
+                @include inherit;
+            }
+        }
+        #{$body} {
+            @include interna-parrafo;
+            * {
+                @include inherit;
+            }
+        }
+        #{$text-content} {
+            padding-bottom: 2px; // evita que se corte el texto
+            overflow: hidden;
+        }
+        .item-month-day {
+            width: 38px;
+            margin-top: 2px;
+            margin-right: 5px;
+            padding-left: 0;
+            .item-month {
+                color: $color_gray_80;
+            }
+            .item-day {
+                color: $color_gray_60;
+            }
+        }
+    }
+}
+
+// DESC: Listado de convocatorias
+// URL: /centro-informacion/convocatorias
+// File: pages/node--type-eventos
+// https://projects.invisionapp.com/d/main#/console/9896592/211576944/comments
+// Comentario: 1
+// Display example: http://ubosque.d8.seedlabs.co/admin/structure/types/manage/eventos/display/resumen_3
+@mixin teaser-convocatorias($views-row,
+$image,
+$category,
+$title,
+$body: '.field--name-field-bocadillo-150',
+$text-content: '.text-content') {
+    #{$views-row} {
+        position: relative;
+        padding-bottom: 30px;
+        @media only screen and (min-width: $mobile) {
+            padding: 31px 0 35px;
+            // overflow: hidden;
+        }
+        #{$image} {
+            position: relative;
+            margin: 0 -30px 15px;
+            @media only screen and (min-width: $mobile) and (max-width: $tablet) {
+                max-width: 225px;
+                width: 33%;
+            }
+            @media only screen and (min-width: $mobile) {
+                margin: 0 15px 0 0;
+                float: left;
+            }
+            img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+        }
+        #{$category} {
+            @include desp-heading;
+            margin-bottom: 5px;
+            * {
+                @include inherit;
+            }
+        }
+        #{$title} {
+            font-family: $font-baser;
+            font-size: 16px;
+            line-height: 100%;
+            margin-bottom: 15px;
+            * {
+                @include inherit;
+            }
+        }
+        #{$body} {
+            font-size: 14px;
+            font-family: $font-baser;
+            line-height: 19px;
+            margin-bottom: 0;
+        }
+        .field--name-field-fecha-inicio-inscripcion {
+            margin-bottom: 12px;
+            .field__label {
+                font-size: 14px;
+                font-family: $font-serif-italic;
+                line-height: 100%;
+                margin-bottom: 5px;
+                &::after {
+                    content: " :";
+                }
+            }
+            .field__item {
+                font-size: 14px;
+                font-family: $font-baser;
+                line-height: 100%;
+            }
+        }
+        #{$text-content} {
+            @media only screen and (max-width: $mobile) {
+                padding-bottom: 20px;
+                float: none;
+                position: relative;
+            }
+            //position: relative;
+            overflow: hidden;
+            &::before {
+                content: "";
+                background: $color_brand_dark_15;
+                width: 100%;
+                height: 1px;
+                position: absolute;
+                bottom: 0;
+            }
+            &::after {
+                content: "";
+                background: $color-brand;
+                width: 43px;
+                height: 4px;
+                position: absolute;
+                bottom: -1px;
+            }
+        }
+        .text-content-2 {
+            overflow: hidden;
+            padding-left: 10px;
+        }
+        .field--name-node-link {
+            padding-top: 8px;
+            a {
+                @include link-green;
+            }
+        }
+        .item-month-day {
+            width: 38px;
+            margin-top: 2px;
+            margin-right: 10px;
+            .item-month {
+                color: $color_gray_80;
+            }
+            .item-day {
+                color: $color_gray_60;
+            }
+        }
+    }
+}
+
+// DESC: Listado de Productos Académicos
+// URL: /facultad/creacion-comunicacion/producto-academico/
+// File: blocks/view
+// https://projects.invisionapp.com/d/main#/console/9907846/212034176/comments
+// Comentario: 1
+// Display example: http://ubosque.d8.seedlabs.co/admin/structure/types/manage/productos_academicos/display/teaser
+@mixin teaser-producto-academico($views-row,
+$image,
+$title,
+$body,
+$link,
+$text-content: '.text-content') {
+    #{$views-row} {
+        #{$image} {
+            margin-bottom: 18px;
+            max-height: 355px;
+            overflow: hidden;
+            img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+        }
+        #{$title} {
+            @include field-noticias-title;
+            margin-bottom: 12px;
+        }
+        #{$body} {
+            @include interna-parrafo;
+            margin-bottom: 12px;
+        }
+        #{$link} {
+            a {
+                @include link-green;
+            }
+        }
+    }
+}
+
+@mixin default-tabs() {
+    // Tab buttons wrapper
+    .tabMakerTabs {
+        text-align: center;
+        position: relative;
+        z-index: 20;
+        .lavalamp-active {
+            @include title_tabs_active;
+            i {
+                right: 0;
+                opacity: 0;
+            }
+        }
+        .lavalamp-bar {
+            @media only screen and (max-width: $mobile) {
+                display: none !important;
+            }
+        }
+    }
+    // Single tab button (Desktop)
+    .tabMakerTab {
+        @include inline-block(bottom);
+        @include acherus_bold(13px);
+        letter-spacing: 1px;
+        color: #9B9B9B;
+        padding: 17px 0 13px;
+        margin: 0 15px;
+        cursor: pointer;
+        font-size: 13px;
+        transition: .3s ease-out all;
+        position: relative;
+        @media only screen and (max-width: $mobile) {
+            display: none !important;
+        }
+        &::before {
+            content: "";
+            background: $color_brand;
+            height: 4px;
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: .3s ease-out all;
+        }
+        i {
+            position: absolute;
+            bottom: 16px;
+            right: -10px;
+            background: url('../images/svg/LittleArrowGrey.svg') no-repeat;
+            width: 6px;
+            height: 4px;
+            z-index: 3;
+            opacity: 1;
+            transition: .3s ease-out all;
+        }
+        &:hover {
+            @include title_tabs_active;
+            i {
+                right: 0;
+                opacity: 0;
+            }
+            &::before {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+    // Single tab button (Mobile)
+    .tabMakerTabMobile {
+        font-family: $font-bsb;
+        font-size: 13px !important;
+        color: $color_gray_60;
+        text-align: center;
+        letter-spacing: 1px;
+        line-height: 100%;
+        padding: 12px 0 15px;
+        cursor: pointer;
+        border-bottom: 1px solid $color_brand_dark_15;
+        position: relative;
+        background-color: white;
+        .hovered {
+            transition: .3s ease-out all;
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            //height: 100%;
+            line-height: 100%;
+            padding: 12px 0 15px;
+            font-family: $font-brandb;
+            color: $color_gray_80;
+            background: white;
+            z-index: 4;
+            i {
+                display: none;
+            }
+        }
+        &::before {
+            content: "";
+            background: $color-brand;
+            height: 3px;
+            width: 100%;
+            position: absolute;
+            bottom: -1px;
+            left: -100%;
+            transition: .3s ease-out all;
+            z-index: 5;
+        }
+        i {
+            @include inline-block(top);
+            margin-top: 7px;
+            margin-left: 3px;
+            background: url('../images/svg/LittleArrowGrey.svg') no-repeat;
+            width: 6px;
+            height: 4px;
+            z-index: 3;
+            opacity: 1;
+            transition: .3s ease-out all;
+        }
+        @media only screen and (max-width: $mobile) {
+            display: block !important;
+            &+.tabMakerContentInner {
+                display: none;
+            }
+        }
+    }
+    .active-mobile-tab .tabMakerTabMobile {
+        &::before,
+        .hovered {
+            left: 0;
+        }
+    }
+    // Prevenimos para que siempre se vean en tablet y desktop
+    .tabMakerContentInner {
+        @media only screen and (min-width: $mobile) {
+            display: block !important;
+        }
+    }
+    // Tab contents wrapper
+    .tabMakerContents {
+        background: $color_gray_5;
+        position: relative;
+        &::before,
+        &::after {
+            content: "";
+            background: $color_gray_5;
+            display: block;
+            //width: $bg-demasia-width;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 100%;
+        }
+        &::after {
+            left: auto;
+            right: 100%;
+        }
+    }
+    // Single tab content
+    .tabMakerContent {
+        overflow: hidden;
+        padding: 30px 100px 30px 100px;
+        @media only screen and (max-width: $mobile) {
+            display: block !important;
+            padding: 0;
+        }
+        .text-content {
+            max-width: 325px;
+            width: 100%;
+            float: left;
+            padding-right: 60px;
+            box-sizing: border-box;
+        }
+    }
+}
+
+// Pone backgrounds que sobresalen a los costados
+@mixin bg-laterales($color,
+$width: $bg-demasia-width) {
+    position: relative;
+    &::before,
+    &::after {
+        content: "";
+        background-color: $color;
+        width: $width;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+    }
+    &::before {
+        left: 100%;
+    }
+    &::after {
+        right: 100%;
+    }
+}
+
+// URL: http://ubosque.seedlabs.co/node/41
+// Diseño: https://projects.invisionapp.com/d/main#/console/9896592/211576790/comments
+// Comentario: 3
+// SE PIENSA REEMPLAZAR ESTA GRILLA, NO USARLA MÁS
+@mixin grilla-4-items($view-content,
+$views-row) {
+    #{$view-content} {
+        @include ib-grid;
+        #{$views-row} {
+            @include inline-block(top);
+            max-width: 280px;
+            width: 100%;
+            margin: 0 10px;
+        }
+    }
+}
+
+// Modelo bootstrap
+@mixin grilla-5-columns-bs($view-content,
+$views-row,
+$gap: 10px,
+$bottom: 20px) {
+    #{$view-content} {
+        @include clearfix;
+        margin-left: -$gap;
+        margin-right: -$gap;
+        #{$views-row} {
+            float: left;
+            //max-width: 280px;
+            width: 20%;
+            padding-left: $gap;
+            padding-right: $gap;
+            margin-bottom: $bottom;
+            box-sizing: border-box;
+            @media only screen and (max-width: $mobile) {
+                width: 100%;
+            }
+        }
+    }
+}
+
+// Modelo bootstrap
+@mixin grilla-4-columns-bs($view-content,
+$views-row,
+$gap: 10px,
+$bottom: 20px) {
+    #{$view-content} {
+        @include clearfix;
+        margin-left: -$gap;
+        margin-right: -$gap;
+        #{$views-row} {
+            float: left;
+            //max-width: 280px;
+            width: 25%;
+            padding-left: $gap;
+            padding-right: $gap;
+            margin-bottom: $bottom;
+            box-sizing: border-box;
+            @media only screen and (max-width: $mobile) {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@mixin grilla-3-columns-bs($view-content,
+$views-row,
+$gap: 10px,
+$bottom: 20px) {
+    #{$view-content} {
+        @include clearfix;
+        margin-left: -$gap;
+        margin-right: -$gap;
+        #{$views-row} {
+            float: left;
+            //max-width: 280px;
+            width: 33.33%;
+            padding-left: $gap;
+            padding-right: $gap;
+            margin-bottom: $bottom;
+            box-sizing: border-box;
+            // En http://ubosque.d8.seedlabs.co/admisiones/ se vuelve una sola columna
+            @media only screen and (max-width: $mobile) {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@mixin grilla-2-columns-bs($view-content,
+$views-row,
+$gap: 10px,
+$bottom: 20px) {
+    #{$view-content} {
+        @include clearfix;
+        margin-left: -$gap;
+        margin-right: -$gap;
+        #{$views-row} {
+            float: left;
+            max-width: none;
+            width: 50%;
+            padding-left: $gap;
+            padding-right: $gap;
+			margin-bottom: $bottom;
+            box-sizing: border-box;
+            @media only screen and (max-width: $mobile) {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@mixin grilla-1-column-bs($view-content,
+$views-row,
+$gap: 10px) {
+    #{$view-content} {
+        @include clearfix;
+        margin-left: -$gap;
+        margin-right: -$gap;
+        #{$views-row} {
+            float: left;
+            max-width: none;
+            width: 100%;
+            padding: 0 $gap;
+            box-sizing: border-box;
+        }
+    }
+}
+
+// 
+@mixin grilla-4-columns($view-content,
+$views-row,
+$gap: 10px) {
+    #{$view-content} {
+        @include clearfix;
+        margin-left: -$gap;
+        margin-right: -$gap;
+        #{$views-row} {
+            float: left;
+            max-width: 280px;
+            width: 100%;
+            padding-left: $gap;
+            padding-right: $gap;
+            box-sizing: border-box;
+        }
+    }
+}
+
+@mixin grilla-2-columns($view-content,
+$views-row,
+$gap: 10px) {
+    #{$view-content} {
+        @include clearfix;
+        margin-left: -$gap;
+        margin-right: -$gap;
+        #{$views-row} {
+            float: left;
+            max-width: 560px;
+            width: 100%;
+            padding: 0 $gap;
+            box-sizing: border-box;
+        }
+    }
+}
+
+@mixin grilla-views-row-2-columns($view-content,
+$views-row) {
+    #{$view-content} {
+        #{$views-row} {
+            max-width: 580px;
+        }
+    }
+}
+
+// FILE: blocks/view
+@mixin js-masonry-grid-3($wrapper,
+$views-row) {
+    #{$wrapper} {
+        //display: flex;
+        //flex-flow: column wrap;
+        //background: orange;
+        //width: 900px !important;
+        #{$views-row} {
+            //flex-grow: 1;
+            position: relative;
+            //max-width: 175px;
+            //width: 177px;
+            margin-bottom: 27px;
+            float: left;
+            box-sizing: border-box;
+            // background: black;
+            //border-right: 15px solid pink;
+            @include Desktop-NoTablet(-100px) // Mayor a: $tablet-width: 768px + 1px - 100px;
+            {
+                padding-right: 20px;
+                width: 20%; //20%;
+            }
+            @include Tablet // Menor a: $tablet-width: 768px;
+            {
+                padding-right: 15px;
+            }
+            @include Mobile // Menor a: $mobile-l-width: 425px;
+            {
+                //	padding-right: 35px;
+                width: 100%; //20%;
+                padding-right: 0px;
+            }
+            &:nth-of-type(3n+3) {
+                //max-width: 483px;
+                //width: 390px; //374px; //460px; //473px;
+                border-right: 0;
+                padding-right: 0;
+                @include Desktop-NoMobile // Mayor a: $mobile-l-width: 425px + 1px;
+                {
+                    width: 55%; //55%; //475px;
+                }
+            }
+        }
+    }
+}
+
+// FILE: blocks/view
+@mixin flex-masonry-grid-3($wrapper,
+$views-row) {
+    #{$wrapper} {
+        //display: flex;
+        //flex-flow: column wrap;
+        //background: orange;
+        #{$views-row} {
+            //flex-grow: 1;
+            position: relative;
+            width: 18%;
+            margin-bottom: 27px;
+            //margin: 0 10px 10px;
+            &:nth-of-type(3n+1) {
+                order: 1;
+                //left: -10px;
+            }
+            &:nth-of-type(3n+2) {
+                order: 2;
+            }
+            &:nth-of-type(3n+3) {
+                width: 55%; //55%; //475px;
+                order: 3;
+                //right: -10px;
+                border-right: 0;
+            }
+            &:nth-child(-n+3) {
+                //page-break-before: always; /* CSS 2.1 syntax */
+                //break-before: always;  /* New syntax */
+                /*
+				-webkit-region-break-inside: left;
+				display : block;
+				page-break-inside: left !important;
+				flex-break: always;*/
+            }
+        }
+    }
+}
+
+// URL: http://ubosque.seedlabs.co/node/41
+// Diseño: https://projects.invisionapp.com/d/main#/console/9896592/211576790/comments
+// Comentario: 3
+@mixin videos-list($title) {
+    #{$title} {
+        font-family: $font-brandb;
+        font-size: 20px;
+        @media only screen and (max-width: $tablet) {
+            font-size: 18px;
+            line-height: 17px;
+            padding-top: 10px;
+        }
+    }
+    .item-month-day {
+        @media only screen and (max-width: $tablet) {
+            .item-day {
+                margin-top: -8px;
+            }
+        }
+    }
+}
+
+@mixin paragraph-very-small {
+    letter-spacing: 0;
+    color: $color_gray_80;
+    text-decoration: none;
+    line-height: 1.3;
+    font: {
+        family: $font-baser;
+        size: 10px; //9px; en el Sketch dice 10px
+    }
+    * {
+        @include inherit;
+    }
+}
+
+@mixin paragraph-very-small-bold {
+    line-height: 100%;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    color: $color_brand_dark;
+    font: {
+        family: $font-brandb;
+        size: $font-brandb-xs;
+    }
+}
+
+// Usado en el footer
+@mixin footer-paragraph-very-small-bold {
+    @include paragraph-very-small-bold;
+    margin-bottom: 23px;
+}
+
+@mixin footer-paragraph-very-small-bold-2 {
+    margin-top: 4px;
+    line-height: 100%;
+    letter-spacing: 1px;
+    margin-bottom: 13px;
+    color: $color_brand_dark;
+    font: {
+        family: $font-bsb;
+        size: $font-brandb-xs;
+    }
+}
+
+@mixin default-green-hover-bar {
+    width: 100%;
+    height: 3px;
+    background-color: $color_brand;
+}
+
+// Descripción: Estilos de select
+// Diseño: https://projects.invisionapp.com/d/main#/console/9896592/211576831/comments
+// Comentario 1
+@mixin select-base-1($wrapper,
+$label,
+$select) {
+    #{$wrapper} {
+        @include inline-block(top);
+        position: relative;
+        padding-top: 18px;
+        #{$select} {
+            display: block;
+            &::-ms-expand {
+                display: none;
+            }
+        }
+        #{$label} {
+            display: block;
+            position: absolute;
+            top: 0;
+        }
+    }
+}
+
+@mixin sidebar-menu-title {
+    @include item-menu-active;
+    text-transform: uppercase;
+    padding: 19px 0 15px 15px; //0 0 0 15px; // agregado
+    line-height: inherit; // agregado
+    letter-spacing: 2px; // agregado
+    margin: 0;
+    position: relative;
+	text-decoration: none;
+    background: url("../images/menu/menu-lateral-arrow-left.svg") no-repeat 0 55%;
+}
+
+@mixin sidebar-menu-active {
+    padding-left: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-family: $font-baseb;
+    color: $color-gray-80;
+
+    @include bullet;
+    &::before {
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    &::after {
+        content: "";
+        background: url(../images/svg/ArrowRightGrey.svg) no-repeat;
+        height: 6px;
+        width: 4px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 10px;
+        margin: auto;
+    }
+}
+
+@mixin sidebar-menu-title-remove {
+	border-bottom: 1px solid #ededed;
+	color: #9b9b9b;
+	font-family: "latoregular";
+	font-size: 11px;
+	letter-spacing: 1px;
+	line-height: 13px;
+	padding: 10px 0;
+	position: relative;
+	text-decoration: none;
+	text-transform: uppercase;
+
+	a {
+		border-bottom: 1px solid rgba(123, 193, 66, 0);
+		color: inherit;
+		display: inline-block;
+		font-family: inherit;
+		background: none;
+		font-size: inherit;
+		line-height: inherit;
+		margin: 0;
+		padding: 0;
+		text-decoration: none;
+		text-transform: none;
+		transition: border 500ms ease 0s;
+		vertical-align: top;
+	}
+}
+
+//Mixin menu lateral
+@mixin sidebar-menu($container,
+$menu-item) {
+    #{$container} {
+        //padding-right: 20px;
+        // Se supone el header del menú
+       /* ul li:first-child {
+            @include sidebar-menu-title;
+            border-bottom: 1px solid #EDEDED;
+        }*/
+        #{$menu-item} {
+            @include item-submenu;
+            padding: 10px 0;
+            text-decoration: none;
+            border-bottom: 1px solid #EDEDED;
+            position: relative;
+            text-transform: uppercase;
+			&:first-child {
+				padding: 0;
+            	a {
+	            	@include sidebar-menu-title;
+	            	//border-bottom: 1px solid #EDEDED;
+            	}
+        	}
+            &.menu-item--active-trail {
+                @include sidebar-menu-active;
+            }
+
+            a {
+				@include inline-block;
+                @include underline-hover;
+                @include inherit;
+                //@include inline-block(top);
+                vertical-align: top;
+                //@include item-menu-active;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+// Estilos de formularios
+// Diseño: https://projects.invisionapp.com/d/main#/console/9896592/211576862/comments
+// Comentario 1
+// DIseño 2: https://projects.invisionapp.com/d/main#/console/9907846/212034176/comments
+// Comentario 4
+@mixin form-select($container,
+$select) {
+    #{$container} {
+        #{$select} {
+            @include latoregular(13px);
+            @include estilo-base-input;
+            color: $color_gray_60;
+            width: 100%;
+            background: url('../images/ArrowGreenDown.svg') no-repeat 98% 50% white;
+            background-position: calc(100% - 14px) 50%;
+            appearance: none;
+            text-indent: 1px;
+            text-overflow: '';
+            height: 32px;
+            padding-left: 10px;
+            &::-ms-expand {
+                display: none;
+            }
+        }
+    }
+}
+
+@mixin estilo-base-input {
+    box-sizing: border-box;
+    background-color: white;
+    height: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 1px solid #babcbf;
+    border-radius: 5px;
+    &.error {
+        border-color: red;
+    }
+}
+
+//estilo base para select e input
+@mixin form-input-select ($container,
+$form) {
+    #{$container} {
+        #{$form} {
+            @include estilo-base-input;
+            &:active {
+                border-color: $color_brand;
+            }
+            width: 100%;
+        }
+        input:focus {
+            outline: none;
+            border-color: $color_brand;
+            box-shadow: 0 0 3px #719ECE;
+        }
+        select:focus {
+            outline: none;
+            border-color: $color_brand;
+            box-shadow: 0 0 3px #719ECE;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: $color_brand;
+            box-shadow: 0 0 3px #719ECE;
+        }
+        textarea {
+            min-height: 100px;
+        }
+        textarea,
+        input {
+            @include latoregular(13px);
+        }
+    }
+}
+
+//estilo para input (lo complementario al anterior)
+@mixin form-input ($container,
+$input) {
+    #{$container} {
+        #{$input} {
+            @include placeholder($color_gray_60,
+            'latoregular',
+            0px,
+            13px);
+            &:focus {
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+//estilo de letra para checkbox
+@mixin form-checkbox ($container) {
+    #{$container} {
+        @include pt_serifitalic(12px);
+        color: $color_gray_60;
+    }
+    label {
+        @include pt_serifitalic(12px);
+    }
+}
+
+//estilo de letra para radio button
+@mixin form-radiobutton ($container) {
+    #{$container} {
+        @include latobold(10px);
+        color: #4A4A4A;
+        letter-spacing: 2px;
+    }
+    label {
+        @include latobold(10px);
+        letter-spacing: 2px;
+    }
+}
+
+@mixin interna-bocadillo($field) {
+    #{$field} {
+        font-family: $font-bl;
+        font-weight: normal;
+        font-size: 28px;
+        color: $color_gray_80;
+        * {
+            @include inherit;
+        }
+    }
+}
+
+@mixin decidete-block($wrapper,
+$field-1) {}
+
+@mixin arrow_after ($element,
+$padding) {
+    #{$element} {
+        &:after {
+            content: url("../images/facultad/arrow-down-green.svg");
+            display: block;
+            padding: $padding;
+        }
+    }
+}
+
+@mixin arrow_before ($element,
+$padding) {
+    #{$element} {
+        &:before {
+            content: url("../images/facultad/arrow-down-green.svg");
+            display: block;
+            padding: $padding;
+        }
+    }
+}
+
+@mixin interna-nodo-categoria {
+    font-family: $font-baser;
+    font-weight: normal;
+    color: $color_gray_60;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+@mixin interna-nodo-titulo {
+    font-family: $font-brandb;
+    font-weight: normal;
+    color: $color_gray_80;
+    font-size: 39px;
+    line-height: 107%;
+    margin-bottom: 0;
+}
+
+@mixin interna-nodo-bocadillo {
+    font-family: $font-bl;
+    font-weight: normal;
+    color: $color_gray_80;
+    font-size: 28px;
+}
+
+@mixin interna-nodo-body {
+    font-family: $font-baser;
+    font-weight: normal;
+    color: $color_gray_80;
+    font-size: 18px;
+    line-height: 26px;
+}
+
+@mixin interna-nodo-contenido-1 {
+    @include interna-nodo-body;
+}
+
+@mixin interna-nodo-frase {
+    font-family: $font-bl;
+    font-weight: normal;
+    color: $color_gray_80;
+    font-size: 28px;
+    line-height: 30px;
+    letter-spacing: -0.5px;
+}
+
+@mixin blockquote {
+    @include interna-nodo-frase;
+    border-left: 1px solid #F0EEEE;
+    padding: 3px 30px;
+}
+
+// Esta no debió tener este nombre poco específico
+@mixin interna-parrafo {
+    font-family: $font-baser;
+    font-weight: normal;
+    color: $color_gray_80;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+// URL: /admisiones/
+// File: pages/page-admisiones
+// Diseño: https://projects.invisionapp.com/d/main#/console/9895608/211649069/comments/77243853
+// Comentario: 6
+@mixin tab-interna-heading {
+    color: $color_brand;
+    font-family: $font-baseblack;
+    font-weight: normal;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 15px;
+    * {
+        @include inherit;
+    }
+}
+
+// URL: /admisiones/
+// File: pages/page-admisiones
+// Diseño: https://projects.invisionapp.com/d/main#/console/9895608/211649069/comments/77243852
+// Comentario: 5
+@mixin tab-interna-link {
+    color: #222;
+    font-family: $font-baser;
+    font-weight: normal;
+    font-size: 14px;
+    text-decoration: none;
+    letter-spacing: 1px;
+    line-height: 17px;
+    * {
+        @include inherit;
+    }
+}
+
+// URL: /carreras
+// FILES: blocks/view, block-blockgroup
+@mixin tab-interna-styles($titleGreen,
+$linkList) {
+    #{$titleGreen} {
+        @include tab-interna-heading;
+        border-bottom: 1px solid #babcbf;
+        padding: 5px 0 14px;
+        margin-bottom: 8px;
+    }
+    #{$linkList} {
+        @include tab-interna-link;
+        border-bottom: 1px solid #babcbf;
+        padding: 7px 0 10px;
+        text-transform: none;
+        margin-bottom: 0;
+        a {
+            @include underline-hover;
+        }
+    }
+}
+
+//estructura completa de preguntas frecuentes
+//https://projects.invisionapp.com/d/main#/console/9907846/212033388/comments
+//comentario: 8
+@mixin faq ($header-title,
+$content,
+$column,
+$title-column,
+$content-column,
+$link-column,
+$boton) {
+    #{$header-title} {
+        @include title;
+        text-align: center;
+        padding-bottom: 30px;
+    }
+    #{$content} {
+        @include ib-grid;
+        text-align: center;
+        #{$column} {
+            display: inline-block;
+            vertical-align: top;
+            width: 33.33%;
+            max-width: 300px;
+            padding: 0 20px;
+            float: none;
+            box-sizing: border-box;
+            vertical-align: top;
+            position: relative;
+            @media only screen and (max-width: $mobile) {
+                width: 100%;
+            }
+        }
+    }
+    #{$title-column} {
+        @include pt_serifitalic(14px);
+        color: $color_gray_80;
+        min-height: 55px;
+        @media only screen and (max-width: $mobile) {
+            min-height: inherit;
+            padding-bottom: 15px;
+        }
+    }
+    #{$content-column} {
+        @include latoregular(13px);
+        color: $color_gray_60;
+    }
+    #{$link-column} {
+        padding-bottom: 40px;
+        a {
+            @include link-text;
+        }
+    }
+    #{$boton} {
+        padding-bottom: 40px;
+        a {
+            @include bt-line-green-l;
+            width: 25%;
+        }
+    }
+}
+
+// URL: /admisiones/
+// File: pages/page-admisiones
+// Diseño: https://projects.invisionapp.com/d/main#/console/9895608/211649069/comments/77244047
+// Comentario: 7
+@mixin title-grotesco-big-bold {
+    font-family: 'acherus_grotesqueblack'; //$font-brandb;
+    font-weight: normal;
+    letter-spacing: -0.5px;
+    line-height: 34px;
+    font-size: 33px;
+    @media only screen and (max-width: $tablet) {
+        font-size: 30px;
+    }
+}
+
+// URL: /admisiones/
+// File: pages/page-admisiones
+// Diseño: https://projects.invisionapp.com/d/main#/console/9895608/211649069/comments/77244048
+// Comentario: 8
+@mixin lato-regular-normal {
+    font-family: $font-baser;
+    font-weight: normal;
+    color: $color_gray_80;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+// URL: /admisiones/
+// File: pages/page-admisiones
+// Diseño: https://projects.invisionapp.com/d/main#/console/9895608/211649069/comments/77244615
+// Comentario: 10
+@mixin main-image-title {
+    font-family: 'acherus_grotesqueextrabold';
+    font-weight: normal;
+    font-size: 39px;
+    color: white;
+    line-height: 100%;
+    letter-spacing: -0.5px;
+    margin: 0;
+}
+
+// URL: /admisiones/
+// File: pages/page-admisiones
+// Diseño: https://projects.invisionapp.com/d/main#/console/9895608/211649069/comments/77244618
+// Comentario: 11px
+@mixin main-image-text {
+    font-family: $font-bl;
+    font-size: 39px;
+    line-height: 100%;
+    color: white;
+}
+
+@mixin title-delgado-grande {
+    font-family: $font-bl;
+    color: #494C4D;
+    font-size: 33px;
+}
+
+@mixin title-delgado-mediano {
+    font-family: $font-bl;
+    color: #494C4D;
+    font-size: 28px;
+}
+
+
+/*
+@mixin title-delgado-mediano {
+	//font-family: $font-brandb;
+	color: #494C4D;
+	font-size: 20px;
+}
+*/
+
+// URL: /admisiones
+// File: pages/page-admisiones
+// Diseño: https://projects.invisionapp.com/d/main#/console/9895608/211649069/comments
+// Comentario: 13
+@mixin artifact-text-1($wrapper,
+$category,
+$title,
+$body,
+$link) {
+    #{$wrapper} {
+        #{$category} {
+            @include pretitle;
+        }
+        #{$title} {
+            @include title-delgado-grande;
+        }
+        #{$body} {
+            @include lato-regular-normal;
+        }
+        #{$link} {
+            a {
+                @include buton-s-border-green;
+            }
+        }
+    }
+}
+
+// URL: /admisiones
+// File: pages/page-admisiones
+// Diseño: https://projects.invisionapp.com/d/main#/console/9895608/211649069/comments
+// Comentario: 14
+@mixin artifact-text-2($wrapper,
+$category,
+$title,
+$body,
+$link) {
+    #{$wrapper} {
+        #{$category} {
+            @include pretitle;
+        }
+        #{$title} {
+            @include title-delgado-mediano;
+        }
+        #{$body} {
+            @include lato-regular-normal;
+        }
+        #{$link} {
+            a {
+                @include link-green;
+            }
+        }
+    }
+}
+
+// URL: /nuestro-bosque
+// File: blocks/block
+// Diseño: https://www.screencast.com/t/bKs82OdzU7F
+@mixin artifact-text-3($wrapper,
+$category,
+$title,
+$body,
+$link) {
+    #{$wrapper} {
+        position: relative;
+        padding-bottom: 10px;
+        #{$category} {
+            @include pretitle;
+            margin-bottom: 10px;
+        }
+        #{$title} {
+            @include acherus_black(20px);
+            line-height: 20px;
+            padding-right: 20px;
+        }
+        #{$body} {
+            @include lato-regular-normal;
+            padding-bottom: 20px;
+            padding-right: 20px;
+        }
+        #{$link} {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            a {
+                @include link-green;
+            }
+        }
+    }
+}
+
+// Pinta la sección de moradito claro, de extremo a extremo
+// https://projects.invisionapp.com/d/main#/console/9895608/211649069/comments/77245238
+@mixin section-coloreada {
+    @include bg-laterales($color_gray_5,
+    100%);
+    position: relative;
+    background-color: $color_gray_5;
+}
+
+@mixin delgado-title {
+    font-family: $font-bl;
+    font-size: 33px;
+    color: $color_text;
+    padding: 22px 10px 24px;
+    //text-align: center;
+}
+
+@mixin very-small-text {
+    font-family: $font-serif-italic;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+@mixin arrow-bottom-before {
+    content: url("../images/facultad/arrow-down-green.svg");
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 14px;
+}
+
+@mixin arrow-white-bottom-before {
+    content: url("../images/admisiones/arrow_down_white.svg");
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 14px;
+}
+
+//invision: https://projects.invisionapp.com/d/main#/console/9895608/211649096/comments
+//comentario: 1
+//pagina: http://ubosque.d8.seedlabs.co/facultad/creacion-comunicacion/diseno-industrial
+@mixin contact-prefooter ($sizeColumn,
+$container,
+$columns,
+$title,
+$paragraph,
+$padding) {
+    vertical-align: middle;
+    #{$container} {
+        font-size: 0px;
+        vertical-align: middle;
+        #{$columns} {
+            display: inline-block;
+            font-size: 16px;
+            vertical-align: top;
+            &:nth-last-child(1) {
+                margin-right: 0;
+                vertical-align: middle;
+                #{$title} {
+                    &:before {
+                        content: url("../images/icon-title-prefooter.svg");
+                        display: inline-block;
+                        margin-left: -17px;
+                        padding-right: 5px;
+                        vertical-align: top;
+                    }
+                }
+            }
+        }
+        #{$title} {
+            @include latoblack(11px);
+            line-height: 13px;
+            letter-spacing: 1px;
+            padding-bottom: 25px;
+            padding-left: $padding;
+            padding-right: $padding;
+            text-transform: uppercase;
+        }
+        #{$paragraph} {
+            p {
+                @include latoregular(11px);
+                line-height: 13px;
+                padding-left: $padding;
+                padding-right: $padding;
+            }
+            a {
+                color: $color_brand;
+                text-decoration: none;
+                word-wrap: break-word;
+            }
+        }
+    }
+}
+
+@mixin contact-prefooter-porcentaje($container,
+$columns,
+$title,
+$paragraph,
+$padding) {
+    vertical-align: middle;
+    #{$container} {
+        font-size: 0px;
+        vertical-align: middle;
+        #{$columns} {
+            display: inline-block;
+            font-size: 16px;
+            vertical-align: top;
+            width: 50%;
+            &:nth-last-child(1) {
+                margin-right: 0;
+                vertical-align: middle;
+                #{$title} {
+                    &:before {
+                        content: url("../images/icon-title-prefooter.svg");
+                        display: inline-block;
+                        margin-left: -17px;
+                        padding-right: 5px;
+                        vertical-align: top;
+                    }
+                }
+            }
+        }
+        #{$title} {
+            @include latoblack(11px);
+            line-height: 13px;
+            letter-spacing: 1px;
+            padding-bottom: 25px;
+            padding-left: $padding;
+            padding-right: $padding;
+            text-transform: uppercase;
+        }
+        #{$paragraph} {
+            p {
+                @include latoregular(11px);
+                line-height: 13px;
+                padding-left: $padding;
+                padding-right: $padding;
+            }
+            a {
+                color: $color_brand;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+@mixin contact-social-networks ($sizeColumn: 0) {
+    margin-right: 0px;
+    //padding-bottom: 40px;
+    display: inline-block;
+    vertical-align: middle;
+    .field__label,
+    .title {
+        @include small-pretitle-italic;
+        padding-bottom: 10px;
+        text-align: left;
+    }
+    h2 {
+        margin: 0;
+    }
+    svg {
+        display: none;
+    }
+    .a2a_count {
+        @include latoregular(11px !important);
+        background-color: transparent;
+        border: none;
+        padding-top: 20px;
+        margin-left: -8px;
+        color: white;
+        &:after {
+            content: "";
+            border: none;
+        }
+        &:before {
+            content: "";
+            border: none;
+        }
+    }
+    a {
+        position: relative;
+        &::after {
+            content: "";
+            background-color: $color_gray_20;
+            width: 1px;
+            height: 40px;
+            left: 100%;
+            display: inline-block;
+            position: absolute;
+            top: 0;
+        }
+        &:last-child {
+            &::after {
+                display: none;
+            }
+        }
+    }
+    .a2a_button_facebook {
+        background-image: url("../images/facebook-prefooter.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 20px;
+        width: 25%;
+        background-position: center;
+        position: relative;
+        >span {
+            &:first-child {
+                display: none;
+            }
+        }
+        .a2a_count {
+            background: $color_facebook;
+            margin-top: 30px;
+            padding-left: 0px;
+            border-radius: 25px;
+            margin-left: 1px;
+            width: 50px !important;
+            padding-top: 0;
+        }
+    }
+    .a2a_button_twitter {
+        background-image: url("../images/twitter-prefooter.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 20px;
+        width: 25%;
+        background-position: center;
+        position: relative;
+        >span {
+            &:first-child {
+                display: none;
+            }
+        }
+    }
+    .a2a_button_google_plus {
+        background-image: url("../images/google-plus-prefooter.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 20px;
+        width: 25%;
+        background-position: center;
+        position: relative;
+        >span {
+            &:first-child {
+                display: none;
+            }
+        }
+    }
+    .a2a_button_linkedin {
+        background-image: url("../images/in-prefooter.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 20px;
+        width: 25%;
+        background-position: center;
+        >span {
+            &:first-child {
+                display: none;
+            }
+        }
+        .a2a_count {
+            background: $color_in;
+            margin-top: 30px;
+            padding-left: 0px;
+            border-radius: 25px;
+            margin-left: 1px;
+            width: 50px !important;
+            padding-top: 0;
+        }
+    }
+}
+
+// URL: /facultad/creacion-comunicacion/diseno-industrial
+@mixin tab-label {
+    font-family: $font-basel;
+    font-size: 16px;
+    letter-spacing: 3.2px;
+}
+
+@mixin tab-texti {
+    font-family: $font-basel;
+    font-size: 16px;
+}
+
+// URL: /admisiones/pregrado
+// DESC: Estilos con bastante estilo del input
+// FILE: pages/page-admisiones, page-formato-1
+@mixin form-input-line($form,
+$input) {
+    #{$form} {
+        position: relative;
+        overflow: hidden;
+        padding-top: 10px;
+        padding-bottom: 1px; // Prevents Chrome hide focus border
+        #{$input} {
+            border: 0;
+            border-bottom: 1px solid #ddd;
+            max-width: 100%;
+            width: 100%;
+            font-family: $font-baser;
+            font-size: 13px;
+            color: $color_gray_60;
+            padding: 4px 8px;
+            background: transparent;
+            outline: 0;
+            box-shadow: none;
+            box-sizing: border-box;
+            &:focus {
+                &::placeholder {
+                    color: $color-gray-80;
+                }
+            }
+            /*
+            & + label.form-required {
+            	position: absolute;
+            	bottom: 0;
+				left: 0;
+            	width: 100%;
+            	pointer-events: none;
+            	height: 20px;
+            	color: $color_gray_60;
+            	font-size: 13px;
+            	padding: 0 8px;
+            	clip: auto;
+            	overflow: visible;
+            	box-sizing: border-box;
+				text-indent: -9999px;
+
+            	span {
+            		position: absolute;
+            		color: $color_gray_60;
+            		display: block;
+            		transition: .15s ease-out all;
+            	}
+            }
+*/
+            /*
+            & + label.form-required::after {
+            	content: "";
+            	width: 100%;
+            	height: 1px;
+            	position: absolute;
+            	top: 0;
+            	left: -100%;
+            	transition: .6s ease-out all;
+            	background: $color_brand;
+            }
+*/
+            &+label.error+label.form-required::after {
+                //	background: red;
+            }
+            &.error+label.error+label.form-required {
+                &::before {
+                    left: 0;
+                }
+            }
+            &.filled,
+            &:focus {
+                color: $color_gray_80;
+                font-family: $font-baseb;
+                &+label.form-required {
+                    &::after {
+                        left: 0;
+                    }
+                    span {
+                        transform: translate3d(0, -100%, 0);
+                        font-size: 10px;
+                    }
+                }
+            }
+        }
+        label.form-required {
+            position: absolute;
+            top: 14px;
+            left: 0;
+            width: 100%;
+            pointer-events: none;
+            height: 20px;
+            color: $color_gray_60;
+            font-size: 13px;
+            padding: 0 8px;
+            clip: auto;
+            overflow: visible;
+            box-sizing: border-box;
+            text-indent: -9999px;
+            &::before,
+            &::after {
+                content: "";
+                width: 100%;
+                height: 1px;
+                position: absolute;
+                bottom: 0;
+                left: -100%;
+                transition: .6s ease-out all;
+                background: $color_brand;
+                z-index: 10;
+            }
+            &::before {
+                background: red;
+                z-index: 20;
+            }
+        }
+    }
+}
+
+// Desplegable
+@mixin desp-heading {
+    font-family: $font-bsb;
+    color: $color_text;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    line-height: 20px;
+}
+
+@mixin desp-label {
+    font-family: $font-bsb;
+    color: $color_text;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+@mixin desp-text {
+    font-family: $font-baser;
+    color: $color_text;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+// Hace los círculos que contienen un número
+// Usar con before o after
+@mixin numero-circular {
+    border-radius: 100px;
+    border: 1px solid $color_brand;
+    width: 79px;
+    height: 79px;
+    color: $color_brand;
+    font-family: $font-brandb;
+    font-weight: normal;
+    font-size: 33px;
+    background-color: white;
+    box-sizing: border-box;
+    padding: 20px 0 0;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+//Genera numeros a partir de la cantidad de hijos del elemento
+//Agrega una flecha a cada uno de los numeros
+//url = http://ubosque.d8.seedlabs.co/facultad/creacion-comunicacion/producto-academico/biparqueadero-t
+@mixin generate-numbers ($parent,
+$child) {
+    $elements: 5;
+    $counter: 0;
+    @for $i from 1 to $elements {
+        $elementslvl2: 4;
+        #{$parent} {
+            &:nth-child(#{$i}) {
+                @for $j from 1 to $elementslvl2 {
+                    $counter: $counter + 1;
+                    #{$child} {
+                        &:nth-of-type(#{$j}) {
+                            .field--name-field-duraci {
+                                position: relative;
+                                padding-top: 80px;
+                                &:after {
+                                    @include numero-circular;
+                                    content: '#{$counter}';
+                                    display: block;
+                                    width: 50px;
+                                    height: 50px;
+                                    font-size: 28px;
+                                    padding: 6px 0 0;
+                                    top: 15px;
+                                }
+                                @if $j !=1 {
+                                    &:before {
+                                        content: url('../images/facultad/arrow-down-green.svg');
+                                        position: absolute;
+                                        left: -20px;
+                                        top: 30px;
+                                        transform: rotate(-90deg);
+                                        @media only screen and (max-width: $mobile) {
+                                            display: none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin tab-title {
+    font-family: $font-baseb;
+    font-size: 12px;
+    color: $color_gray_80; //$color_brand;
+    letter-spacing: 2.18px;
+    line-height: 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 15px 0 12px; //21px 0 10px;
+}
+
+@mixin tablet-laterals {
+    @media only screen and (max-width: $tablet) {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+
+// Acordeones desplegables
+// FILES: blocks/view-calendario-academico
+// URL1: /facultad/creacion-comunicacion/calendario-academico
+@mixin desplegableMaker-outer($wrapper,
+$parent,
+$tabContent,
+$title) {
+    #{$wrapper} {
+        overflow: hidden;
+        &.desplegable-open,
+        &.desplegable-open-1,
+        &.desplegable-open-2,
+        &.desplegable-open-3,
+        .desplegable-open,
+        .desplegable-open-1,
+        .desplegable-open-2,
+        .desplegable-open-3 {
+            #{$title} {
+                color: $color_brand;
+                &::after {
+                    left: 0;
+                }
+            }
+        }
+        #{$title} {
+            @include tab-title;
+            cursor: pointer;
+            border-bottom: 1px solid #babcc0;
+            position: relative;
+            padding-right: 35px;
+            margin-bottom: 0;
+            * {
+                @include inherit;
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                left: -100%;
+                top: 100%;
+                height: 1px;
+                width: 100%;
+                background: $color_brand;
+                transition: 1.5s ease-out all;
+            }
+            &:hover {
+                color: $color_brand;
+                &::after {
+                    left: 0;
+                }
+            }
+        }
+    }
+}
+
+// Acordeones desplegables
+@mixin desplegableMaker-inner($wrapper,
+$parent,
+$tabContent,
+$title) {
+    #{$wrapper} {
+        overflow: hidden;
+        // padding-top: 23px;
+        // padding-bottom: 28px;
+        margin-right: 44px; //60px;
+        border-right: 1px solid $color_gray_15;
+        border-bottom: 1px solid $color_gray_15;
+        @media only screen and (max-width: $mobile) {
+           // border-right: none; por este issue le devolví la línea y agregué margen y padding /issues/23460
+		   margin-right: 15px;
+		   padding-right: 15px !important;
+        }
+        &.desplegable-open,
+        &.desplegable-open-1,
+        &.desplegable-open-2,
+        &.desplegable-open-3,
+        .desplegable-open,
+        .desplegable-open-1,
+        .desplegable-open-2,
+        .desplegable-open-3 {
+            #{$title} {
+                color: $color_brand;
+                &::after {
+                    left: 0;
+                }
+            }
+        }
+        #{$tabContent} {
+            padding-top: 23px;
+            padding-bottom: 28px;
+            padding-right: 20px;
+        }
+        #{$title} {
+            @include tab-title;
+            text-transform: none;
+            cursor: pointer;
+            position: relative;
+            border-bottom: 1px solid $color_gray_15;
+            * {
+                @include inherit;
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                left: -100%;
+                top: 100%;
+                height: 1px;
+                width: 100%;
+                background: $color_brand;
+                transition: 1.5s ease-out all;
+            }
+            &:hover {
+                color: $color_brand;
+                &::after {
+                    left: 0;
+                }
+            }
+        }
+    }
+}
+
+@mixin desplegableMaker-inter($wrapper,
+$parent,
+$tabContent,
+$title) {
+    #{$wrapper} {
+        overflow: hidden;
+        // padding-top: 23px;
+        // padding-bottom: 28px;
+        //margin-right: 44px; //60px;
+        //border-right: 1px solid $color_gray_15;
+        //border-bottom: 1px solid $color_gray_15;
+        &.desplegable-open, //&.desplegable-open-1,
+        //&.desplegable-open-2,
+        &.desplegable-open-3,
+        .desplegable-open, //.desplegable-open-1,
+        //.desplegable-open-2,
+        .desplegable-open-3 {
+            #{$title} {
+                color: $color_brand;
+                &::after {
+                    left: 0;
+                }
+            }
+        }
+        #{$tabContent} {
+            //padding-top: 23px;
+            //padding-bottom: 28px;
+            padding-right: 20px;
+        }
+        #{$title} {
+            @include tab-title;
+            text-transform: none;
+            cursor: pointer;
+            position: relative;
+            border-bottom: 1px solid $color_gray_15;
+            * {
+                @include inherit;
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                left: -100%;
+                top: 100%;
+                height: 1px;
+                width: 100%;
+                background: $color_brand;
+                transition: 1.5s ease-out all;
+            }
+            &:hover {
+                color: $color_brand;
+            }
+        }
+    }
+}
+
+// home
+@mixin large-placeholder() {
+    font-family: $font-baseli;
+    color: #ddd;
+    font-size: 18px;
+    opacity: 0.6;
+}
+
+// base.scss
+@mixin label-date {
+    font-family: $font-serif-italic;
+    color: $color_gray_80;
+    line-height: 15px;
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 8px;
+    margin-top: 4px;
+}
+
+@mixin title-line-large {
+    font-family: $font-bl;
+    font-size: 33px;
+    font-weight: normal;
+    line-height: 40px;
+    letter-spacing: -0.5px;
+    color: $color_gray_80;
+}
+
+@mixin title-mini-green {
+    font-family: $font-bsb;
+    color: $color_brand;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+    line-height: 24px;
+}
+
+@mixin rayita-before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 137px;
+    width: 1px;
+    background: $color_gray_15;
+}
+
+@mixin bullet {
+    position: relative;
+    padding-left: 15px;
+    &::before {
+        content: "";
+        width: 4px;
+        height: 4px;
+        background-color: $color_gray_80;
+        position: absolute;
+        left: 0;
+        top: 9px;
+        border-radius: 20px;
+    }
+}
+
+@mixin bocadillo {
+    font-family: $font-bl;
+    font-weight: normal;
+    font-size: 28px;
+    color: $color_gray_80;
+    line-height: 30px;
+    letter-spacing: -0.5px;
+    @media only screen and (max-width: $mobile) {
+        font-size: 22px;
+        letter-spacing: -0.39px;
+    }
+}
+
+//	|-----------------------  100px -----------------------|   
+//	|-- 20px --|-------------------------------------------|
+//	|--  ?%  --|
+//	Example:
+//	20% -> @include pixel-to-percentage(20px,100px)
+@function pixel-to-percentage($anchoEnPixeles,
+$anchoContenedorEnPixeles) {
+    @return ($anchoEnPixeles / $anchoContenedorEnPixeles) * 100%;
+}
+
+//Estilo de <li> con el punto 
+@mixin list-disc {
+    &:before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        border-radius: 20px;
+        background: #4A4A4A;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 15px;
+    }
+}
+
+//Para las imagenes del home
+@mixin desenfoque ($image) {
+    #{$image} {
+        transition: .3s ease-out all;
+    }
+    &:hover {
+        #{$image} {
+            filter: blur(4px);
+        }
+    }
+}
+
+//mixin para los hovers de los menus
+@mixin hover-menu ($item-menu) {
+    #{$item-menu} {
+        a {
+            position: relative;
+            &:hover {
+                border-bottom: 2px solid $color_brand;
+                padding-bottom: 0px;
+            }
+        }
+    }
+}
+
+// blocks/block-menu, menu--menu-principal
+@mixin lightbox-fondo {
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s ease-out all;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    z-index: 400;
+    box-sizing: border-box;
+}
+
+// /**
+// *
+// * scope: global
+// * type: MIXIN
+// * desc: Hamburger mobile button
+// *
+// **\
+@mixin hamburger-button {
+    .hamburger-button {
+        //width: 40px;
+        //height: 25px;
+        position: absolute;
+        top: 13px;
+        left: 28px;
+        overflow: hidden;
+        margin: 0 0 0 5px;
+        transform: rotate(0deg);
+        transition: .5s ease-in-out;
+        cursor: pointer;
+        width: 28px;
+        height: 20px;
+        z-index: 50;
+        @media only screen and (min-width: $tablet) {
+            display: none;
+        }
+        span {
+            display: block;
+            position: absolute;
+            width: 28px;
+            height: 3px;
+            background: #fff;
+            border-radius: 0;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+    }
+    .hamburger-button {
+        span {
+            &:nth-child(1) {
+                top: 2px;
+            }
+            &:nth-child(2) {
+                top: 9px;
+            }
+            &:nth-child(3) {
+                top: 16px;
+            }
+            /*
+			@media only screen and (min-width: $mobile) and (max-width: $tablet) { 
+				width: 30px;
+				
+				&:nth-child(1) {
+			  		top: 14px;
+				}
+
+				&:nth-child(2) {
+			  		top: 24px;
+				}
+
+				&:nth-child(3) {
+			  		top: 34px;
+				}				
+			}
+			
+			@media only screen and (max-width: $mobile) { 
+				
+				&:nth-child(1) {
+			  		top: 11px;
+				}
+
+				&:nth-child(2) {
+			  		top: 21px;
+				}
+
+				&:nth-child(3) {
+			  		top: 31px;
+				}				
+			}*/
+        }
+    }
+    .main-menu-open .hamburger-button {
+        height: 22px;
+        span {
+            &:nth-child(1) {
+                top: 9px;
+                transform: rotate(135deg);
+            }
+            &:nth-child(2) {
+                opacity: 0;
+                left: -60px;
+            }
+            &:nth-child(3) {
+                top: 9px;
+                transform: rotate(-135deg);
+            }
+        }
+    }
+}
+
+@mixin mobile-max-width {
+    @media only screen and (max-width: $mobile) {
+        max-width: 320px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        overflow: hidden;
+    }
+}
+
+// Usar en las páginas que empiezan con un banner grande, que en tablet, debe estar junto al header verde
+@mixin page-with-banner-stick-to-header {
+    &.not-logged-in {
+        .wrap-content {
+            @media only screen and (max-width: $tablet) {
+                padding-top: 47px;
+            }
+        }
+    }
+}
+
+// FILE: page-node-type-pagina-basica-bosque
+@mixin body-max-width {
+    .field--name-body {
+        padding-bottom: 50px;
+        @media only screen and (min-width: $mobile) {
+            width: 66%;
+        }
+        ol {
+            padding-left: 15px;
+        }
+    }
+}
+
+// Hace que los enlaces del menú de Facultades estén activados en la facultad
+// page-faculties
+@mixin menufacultades-active($num) {
+    #block-menufacultadeshome {
+        >.menu {
+            >.menu-item:nth-of-type(#{$num}) {
+                >a {
+                    border-bottom: 1px solid rgba(123, 193, 66, 1);
+                }
+            }
+        }
+    }
+}
+
+// FILE: pages/path-node
+@mixin sidebar-active-blockmenu-facultades-block($num) {
+    .block-views-blockmenu-facultades-block-9,
+    .block-views-blockmenu-facultades-block-10 {
+        .views-row {
+            a {
+                @include sidebar-menu-title;
+            }
+        }
+    }
+    .block-views-blockmenu-facultades-block-#{$num} {
+        .views-row {
+            @include sidebar-menu-active;
+        }
+    }
+}
+
+// blocks/block-menu, block-views
+@mixin box-sidebar {
+    border: 1px solid #babcbf;
+    padding: 17px 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+@mixin makeCarouselButtons($color: true) {
+    .buttons-wrapper {
+        min-height: 50px;
+        @if $color==2 {
+            height: 63px;
+        }
+        @if $color==3 {
+            height: 65px;
+        }
+		
+        a {
+            z-index: 20;
+        }
+        a.left {
+            background-image: url("../images/slider-buttons/left.svg");
+            background-repeat: no-repeat;
+            width: 20px;
+            margin-left: -25px;
+            opacity: 1;
+            @if $color==2 {
+                background-image: url('../images/arrows-blancas-largas.svg');
+                background-size: 28px auto;
+                height: 63px;
+                width: 30px;
+                transform: rotate(-180deg);
+                margin-left: -30px;
+            }
+			@if $color==3 {
+                height: 65px;
+                width: 34px;
+				margin-left: 0;
+				background: none;
+			}
+        }
+        a.right {
+            background-image: url("../images/slider-buttons/right.svg");
+            background-repeat: no-repeat;
+            width: 20px;
+            margin-right: -25px;
+            opacity: 1;
+            @if $color==2 {
+                background-image: url('../images/arrows-blancas-largas.svg');
+                background-size: 28px auto;
+                height: 63px;
+                width: 30px;
+                margin-right: -30px;
+            }
+			@if $color==3 {
+                height: 65px;
+                width: 34px;
+				margin-right: 0;
+				background: none;
+			}
+        }
+    }
+}
+
+@mixin two-text-inline ($text-bold,
+$text-no-bold) {
+    #{$text-bold} {
+        @include acherus_black(16px);
+        display: inline;
+        line-height: 100%;
+    }
+    #{$text-no-bold} {
+        @include latoregular(16px);
+        line-height: 100%;
+        display: inline;
+    }
+}
+
+// usado con el bloque 0006
+// Estos son muchos bloques, cada uno tiene un ancho específico para romper líneas de texto de acuerdo al diseño
+// Cada bloque puede cambiar su ancho en desktop, tablet y mobile; mejor manejarlo por mixin
+@mixin cajita-text-width($title: '.field-title',
+$widthDesk: 80%,
+$widthTab: 80%,
+$widthMob: 80%,
+$color: inherit,
+$font-size: "",
+$line-height: "") {
+    #{$title} {
+        width: $widthDesk;
+        color: $color;
+        @if $font-size !="" {
+            font-size: $font-size;
+        }
+        @if $line-height !="" {
+            line-height: $line-height;
+        }
+        @media only screen and (max-width: $tablet) {
+            width: $widthTab;
+        }
+        @media only screen and (max-width: $mobile) {
+            width: $widthMob;
+        }
+    }
+}
+
+@mixin estilo-0006-bg($bg1: #15D9B8,
+$bg2: #268071) {
+    .block-inner {
+        background-color: $bg1 !important;
+    }
+    .field--name-field-link {
+        a {
+            background-color: $bg2 !important;
+        }
+    }
+}
+
+@mixin region-verde {
+    background-color: #77C23A;
+    position: relative;
+    &::before,
+    &::after {
+        content: "";
+        background-color: #77C23A;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 100%;
+    }
+    &::after {
+        left: auto;
+        right: 100%;
+    }
+    .intro,
+    .field--name-field-block-title-h2 {
+        color: white;
+    }
+}
+
+@mixin block-pintadinho {
+    background: $color_gray_5;
+    position: relative;
+    padding-bottom: 60px; // estoy adivinando
+    &::before,
+    &::after {
+        content: "";
+        background: $color_gray_5;
+        display: block;
+        //width: $bg-demasia-width;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 100%;
+    }
+    &::after {
+        left: auto;
+        right: 100%;
+    }
+}
+
+@mixin block-pintadinho-green {
+    background: $color_brand;
+    position: relative;
+    padding-bottom: 40px; // estoy adivinando
+    &::before,
+    &::after {
+        content: "";
+        background: $color_brand;
+        display: block;
+        //width: $bg-demasia-width;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 100%;
+    }
+    &::after {
+        left: auto;
+        right: 100%;
+    }
+}
+
+// URL: /internacionalizacion/
+@mixin owl-nav-1 {
+    .owl-nav {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        clear: both;
+		height: 60px;
+
+        .owl-prev,
+        .owl-next {
+            width: 27px;
+            height: 60px;
+            background: url(../images/arrows-blancas-largas.svg) no-repeat 0 -80px;
+            cursor: pointer;
+        }
+        .owl-next {
+            background-position: 0 0;
+        }
+    }
+}
+
+// URL: /bienestar-universitario/deportes
+@mixin owl-nav-2 {
+    .owl-nav {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 100%;
+        margin: auto;
+        background-color: white;
+        clear: both;
+        .owl-prev,
+        .owl-next {
+            width: 18px;
+            height: 34px;
+            background: url(../images/svg/arrow-verdes-medium.svg) no-repeat 0 0;
+            cursor: pointer;
+			position: absolute;
+			left: 0;
+        }
+        .owl-prev {
+            background-position: 0 -48px;
+            top: 50px;
+        }
+		
+		.owl-next  {
+			top: 0;
+		}
+    }
+}
+
+// URL: /bienestar-universitario/deportes
+@mixin owl-nav-3 {
+    .owl-nav {
+        position: relative;
+        padding: 30px 0 25px;
+        top: auto;
+        bottom: auto;
+        right: auto;
+        margin: auto;
+        background-color: white;
+        text-align: center;
+        clear: both;
+        .owl-prev,
+        .owl-next {
+            @include inline-block;
+            width: 25px;
+            height: 50px;
+            background: url(../images/svg/arrow-verdes-medium.svg) no-repeat 0 -71px;
+            background-size: 25px auto;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        .owl-next {
+            background-position: 0 0;
+        }
+    }
+}
+
+@mixin owl-nav-4 {
+    .owl-nav {
+        padding: 30px 0 0;
+        margin: auto;
+        text-align: center;
+        clear: both;
+		margin: auto;
+		width: 100%;
+		height: 59px;
+		text-align: center;
+
+        .owl-prev,
+        .owl-next {
+            @include inline-block;
+            width: 27px;
+            height: 59px;
+            background: url(../images/svg/arrow-verdes-large-left.svg) no-repeat 0 0;
+            cursor: pointer;
+			margin: 0 10px;
+        }
+
+		@media only screen and (min-width: $mobile) {
+			padding: 0;
+			position: absolute;
+			left: 0;
+	        top: 115px;
+	        bottom: auto;
+	        right: auto;
+			
+			.owl-prev {
+				float: left;
+				margin-left: 0;
+			}
+
+			.owl-next {
+				float: right;
+				margin-right: 0;
+			}
+		}
+
+        .owl-next {
+            background: url(../images/svg/arrow-verdes-large-right.svg) no-repeat 0 0;
+        }
+    }
+}
+
+// Flechas negras
+@mixin owl-nav-5 {
+    .owl-nav {
+        padding: 30px 0 0;
+        margin: auto;
+        text-align: center;
+        clear: both;
+		margin: auto;
+		width: 100%;
+		height: 59px;
+		text-align: center;
+
+		@media only screen and (min-width: $mobile) {
+			padding: 0;
+			position: absolute;
+			left: 0;
+	        top: 115px;
+	        bottom: auto;
+	        right: auto;
+			
+			.owl-prev {
+				float: left;
+				margin-left: 0;
+			}
+
+			.owl-next {
+				float: right;
+				margin-right: 0;
+			}
+		}
+
+        .owl-prev,
+        .owl-next {
+            @include inline-block;
+            width: 34px;
+            height: 65px;
+            background: url(../images/svg/arrow-negra-large-left.svg) no-repeat 0 0;
+            cursor: pointer;
+			margin: 0 10px;
+        }
+        .owl-next {
+            background: url(../images/svg/arrow-negra-large-right.svg) no-repeat 0 0;
+        }
+    }
+}
+
+@mixin block-indented($h) {
+    @media only screen and (min-width: $mobile) {
+        padding-left: 55px;
+    }
+    #{$h} {
+        font-family: $font-bsb;
+    }
+}
+
+// URL: /investigaciones/productos-investigacion
+// blocks/_view.scss
+@mixin view-investigacion($wrapper,
+$views-row,
+$title,
+$bolded,
+$link: '.field--name-node-link') {
+    #{$wrapper} {
+        #{$views-row} {
+            .node {
+                background-color: white;
+                padding: 15px 17px 20px;
+            }
+            &:nth-of-type(2n+2) {
+                .node {
+                    background-color: $color_gray_10;
+                }
+            }
+            &.active,
+            &:hover {
+                .node {
+                    background-color: $color_brand;
+                    * {
+                        color: white !important;
+                    }
+                    #{$link} a {
+                        border-color: white !important;
+                        &::after {
+                            border-color: white !important;
+                        }
+                    }
+                }
+            }
+        }
+        .field__label {
+            font-family: $font-serif-italic;
+            font-size: 12px;
+            line-height: 15px;
+        }
+        .field__item {
+            font-family: $font-bm;
+            font-size: 16px;
+            line-height: 20px;
+            * {
+                font-family: inherit;
+                font-size: inherit;
+                line-height: inherit;
+                margin: 0;
+            }
+        }
+        .field {
+            margin-bottom: 12px;
+        }
+        #{$title} {
+            .field__item {
+                font-family: $font-brandb;
+                font-size: 20px;
+                line-height: 20px;
+                letter-spacing: -0.1px;
+            }
+        }
+        #{$bolded} {
+            .field__item {
+                font-family: $font-brandb;
+                font-size: 15px;
+                line-height: 20px;
+                letter-spacing: -0.5px;
+            }
+        }
+        #{$link} {
+            margin: 0;
+            a {
+                @include button-m-border-green;
+                padding: 2px 25px;
+            }
+        }
+    }
+}
+
+// URL: /investigaciones
+// FILE: blocks/block-views.scss
+@mixin noti-1($wrapper,
+$pretitle,
+$title,
+$link) {
+    #{$wrapper} {
+        position: relative;
+    }
+    #{$pretitle} {
+        @include pretitle;
+        color: white;
+        margin-bottom: 15px;
+    }
+    #{$title} {
+        font-family: $font-brandb;
+        font-size: 20px;
+        line-height: 20px;
+        letter-spacing: -0.1px;
+        margin-bottom: 10px;
+        color: white;
+        * {
+            color: white;
+            text-decoration: none;
+        }
+    }
+    #{$link} {
+        display: none;
+    }
+    img {
+        display: block;
+    }
+    .text-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url(../images/overlay-1.png) repeat-x 0 100%;
+        box-sizing: border-box;
+    }
+    .text-content-inner {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 0 30px 22px;
+        min-height: 100px;
+    }
+}
+
+// URL: /investigaciones
+// FILE: blocks/block-views.scss
+@mixin noti-2($wrapper,
+$pretitle,
+$title,
+$link) {
+    #{$wrapper} {
+        position: relative;
+    }
+    #{$pretitle} {
+        @include pretitle;
+        color: $color_gray_60;
+    }
+    #{$title} {
+        font-family: $font-brandb;
+        font-size: 20px;
+        line-height: 20px;
+        letter-spacing: -0.1px;
+        margin-bottom: 10px;
+        color: $color_gray_80;
+        * {
+            color: white;
+            text-decoration: none;
+        }
+    }
+    #{$link} {
+        a {
+            @include link-green;
+        }
+    }
+    img {
+        display: block;
+    }
+    .text-content {
+        background: white;
+        box-sizing: border-box;
+        padding: 20px 30px;
+    }
+}
+
+// URL: /investigaciones, /docentes
+// FILES: pages/page-investigaciones, blocks/block-blockgroup
+@mixin blockgroup-columnas-laterales {
+	@media only screen and (min-width: $mobile) {
+		@include inline-block;
+		width: 24%;
+	}
+	
+	.block .block-inner {
+		box-sizing: border-box;
+		padding: 27px 20px 27px 0;
+	}
+	
+	@media only screen and (min-width: $mobile) and (max-width: $tablet) {
+		.block .block-inner {
+			padding: 10px 20px 0 0;
+		}
+	}
+
+	.block {
+		border-bottom: 1px solid $color_gray_15;
+	}
+}
+
+// URL: /investigaciones, /docentes
+// FILES: pages/page-investigaciones, blocks/block-blockgroup
+@mixin blockgroup-columna-derecha {
+	@media only screen and (min-width: $mobile) {
+		.block .block-inner {
+			padding-right: 0;
+			padding-left: 20px;
+		}
+	}
+}
+
+// URL: /investigaciones, /docentes
+// FILES: pages/page-investigaciones, blocks/block-blockgroup
+@mixin blockgroup-columna-central {
+	margin-left: -30px;
+	margin-right: -30px;
+	text-align: center;
+	
+	@media only screen and (min-width: $mobile) {
+		@include inline-block;
+		width: 52%;
+		margin-left: 0;
+		margin-right: 0;
+
+		> .block-inner {
+			border-left: 1px solid $color_gray_15;
+			border-right: 1px solid $color_gray_15;
+		}
+	}
+
+	.field--name-field-bocadillo {
+		font-family: $font-bl;
+		font-size: 37px;
+		line-height: 40px;
+		letter-spacing: 0.6px;
+		padding: 0 40px 80px;
+
+		@media only screen and (min-width: $mobile) and (max-width: $tablet) {
+			font-size: 20px;
+			line-height: 23.71px;
+			margin-top: -5px;
+			padding-bottom: 20px;
+		}
+	}
+}
+
+// mixin que sintetiza darle estilos de fuente a los selectores
+@mixin font($font-size: 16px, $line-height: 16px, $letter-spacing: auto) {
+	font-size: $font-size;
+	line-height: $line-height;
+	letter-spacing: $letter-spacing;
+}
+
+// URL: /blog-uno
+// FILE: /block/block-views
+@mixin teaser-sidebar-block-title($wrapper1, $block-title, $wrapper2) {
+	#{$wrapper1} {
+		border-top: 1px solid #D8D8D8;
+		margin-top: 50px;
+
+		#{$block-title} {
+			@include font(13px, 16px, 2.6px);
+			font-family: $font-baseb;
+			margin: 0;
+			padding: 20px;
+
+			@media only screen and (max-width: $tablet) {
+				padding: 10px;
+			}
+		}
+
+		#{$wrapper2} {
+			overflow: hidden;
+			background: #FBFBFB;
+			border-radius: 4px;
+			padding-left: 20px;
+			padding-right: 20px;
+			border: 1px solid $color_gray_20;
+
+			@media only screen and (max-width: $tablet) {
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+		}
+
+		.view-footer {
+			margin-top: -2px;
+
+			a {
+				@include font(12px, 15px, 2.4px);
+				border: 1px solid $color_gray_20;
+				border-top: 0;
+				border-radius: 0 0 4px 4px;
+				display: block;
+				background: #ECBE13;
+				padding: 20px 0;
+				color: white;
+				font-family: $font-baseb;
+				text-decoration: none;
+				text-align: center;
+			}
+		}
+	}
+}
+
+// URL: /blog-uno
+// FILE: /block/block-views
+@mixin teaser-sidebar($wrapper, $image, $date, $title) {
+	#{$wrapper} {
+		float: left;
+		clear: left;
+		width: 100%;
+		padding: 20px 0;
+		border-bottom: 1px solid #D7D9D0;
+
+		&:last-child {
+			border: 0;
+		}
+
+		#{$image} {
+			float: left;
+			border-radius: 4px;
+			overflow: hidden;
+			margin-right: 17px;
+
+			@media only screen and (max-width: $tablet) {
+				max-width: 41px;
+				margin-right: 10px;
+				
+				img {
+					height: 41px;
+					width: auto;
+					max-width: inherit;
+				}
+			}
+
+			img {
+				vertical-align: top;
+			}
+		}
+
+		#{$date} {
+			@include font(9px, 11px, 1.8px);
+			font-family: $font-baseb;
+			margin-bottom: 5px;
+		}
+
+		#{$title} {
+			@include font(14px, 17px);
+			font-family: $font-baser;
+			overflow: hidden;
+		}
+	}
+}
+
+@mixin addToAny {
+	.addtoany_list {
+		display: block;
+		line-height: inherit !important;
+
+		a {
+			padding: 0;
+			vertical-align: top;
+
+			.a2a_label {
+				display: none;
+			}
+
+			> span {
+				width: 20px;
+				height: 20px;
+				vertical-align: top;
+				opacity: 0;
+			}
+		}
+	}
+
+	.a2a_button_facebook {
+		background: url(../images/svg/Facebook3.svg) no-repeat 50% 0;
+	}
+
+	.a2a_button_twitter {
+		background: url(../images/svg/Twitter3.svg) no-repeat 50% 0;
+	}
+
+	.a2a_button_google_plus {
+		background: url(../images/svg/GooglePlusIcon3.svg) no-repeat 50% 0;
+	}
+
+	.a2a_button_linkedin {
+		display: none !important;
+	}
+}
+
+// Color blanco puro
+@mixin addToAny2 {
+	.a2a_button_facebook {
+		.a2a_svg {
+			background: none !important;
+		}
+	}
+	
+	.a2a_button_twitter {
+		.a2a_svg {
+			background: none !important;
+		}
+	}
+	
+	.a2a_button_linkedin {
+		display: none !important;
+
+		.a2a_svg {
+			background: none !important;
+		}
+	}
+	
+	.a2a_button_google_plus {
+		.a2a_svg {
+			background: none !important;
+		}
+	}
+}
+
+@mixin addToAny3 {
+	.a2a_button_facebook {
+		.a2a_svg {
+			background: #C1C1C1 !important;
+		}
+	}
+	
+	.a2a_button_twitter {
+		.a2a_svg {
+			background: #C1C1C1 !important;
+		}
+	}
+	
+	.a2a_button_linkedin {
+		display: #C1C1C1 !important;
+
+		.a2a_svg {
+			background: none !important;
+		}
+	}
+	
+	.a2a_button_google_plus {
+		.a2a_svg {
+			background: #C1C1C1 !important;
+		}
+	}
+}
+
+@mixin evento-title {
+	@include font(25px, 24px, -0.32px);
+	font-family: $font-brandb;
+	border-left: 1px solid black;
+	padding: 10px 0 12px 20px;
+	margin-bottom: 50px;
+}
+
+@mixin evento-field {
+	@include font(14px, 17px);
+	border: 0;
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 5px 0 5px 20px;
+	font-family: $font-basel;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+
+@mixin footer-blog-eventos {
+	#footer .footer-container {
+		@include addToAny2;
+
+		.block {
+			text-align: center;
+		}
+
+		@media only screen and (min-width: $mobile) {
+			@include grilla-3-columns-bs('.footer_first', '.block');
+
+			.block {
+				text-align: left;
+			}
+		}
+
+		.footer_first {
+			width: 100%;
+			padding: 25px 0 35px;
+
+			@media only screen and (min-width: $mobile) {
+				padding: 50px 0;
+			}
+
+			> .block-title {
+				display: none;
+			}
+		}
+
+		h3,
+		h4 {
+			font-family: "acherus_grotesqueblack";
+			font-size: 20px !important;
+			letter-spacing: -0.91px !important;
+			line-height: 25px !important;
+			font-family: $font-brandb !important;
+			color: white !important;
+			margin-bottom: 15px !important;
+		}
+
+		p,
+		.views-row {
+			color: white !important;
+			display: inline-block !important;
+			font-family: "latoregular" !important;
+			font-size: 14px !important;
+			line-height: 20px !important;
+			vertical-align: top !important;
+		}
+
+		.field-content {
+			&::after {
+				@include inline-block;
+				content: ", ";
+			}
+		}
+	
+		.views-row {
+			&:last-child {
+				.field-content {
+					&::after {
+						display: none;
+					}
+				}
+			}
+		}
+	
+		.share-text {
+			padding-top: 10px;
+			margin-top: 10px;
+			border-top: 1px solid white;
+
+			@media only screen and (max-width: $mobile) {
+				margin-top: 25px;
+				margin-bottom: 45px;
+			}
+		}
+	
+		.logos-footer {
+			text-align: center;
+
+			@media only screen and (max-width: $mobile) {
+				margin-bottom: 45px;
+			}
+
+			p {
+				& + p {
+					margin-top: 40px;
+				}
+			}
+		}
+	}
+}
+
+@mixin blog-dos-header {
+	#header {
+		@include addToAny2;
+		height: auto;
+		position: relative;
+
+		.header-inner {
+			border: 0;
+		}
+
+		.header_first {
+			width: 100%;
+			padding: 20px 0;
+
+			@media only screen and (max-width: $tablet) {
+				display: block;
+				padding: 17px 0;
+			}
+		}
+
+		.logo-blog {
+			float: left;
+		}
+
+		.block-addtoany {
+			float: right;
+
+			.title {
+				display: none;
+			}
+		}
+
+		.menu--menu-blog-dos {
+			float: left;
+		}
+	}
+}
+
+@mixin evento-title-2 {
+	@include font(33px, 33px);
+	color: $color_gray_80;
+	font-family: $font-brandb;
+	text-align: center;
+	margin-bottom: 35px;
+}
+
+@mixin eventos-mobile-menu {
+	@media only screen and (max-width: $tablet) {
+		.block-menu {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			width: 100%;
+			height: 99999px;
+			transition: .3s ease-out all;
+			opacity: 0;
+			visibility: hidden;
+			// background: rgba(0, 0, 0, .8);
+
+			.menu {
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 99999px;
+				background: white;
+				max-width: 332px;
+				transition: .3s ease-out all;
+			}
+
+			.menu-item {
+				float: none;
+				display: block !important;
+				margin: 0 !important;
+				border-bottom: 1px solid #DDD;
+
+				a {
+					display: block;
+					padding: 6px 30px 9px;
+					color: $color_gray_80 !important;
+				}
+			}
+		}
+	}
+}
+
+
+@mixin blog-mobile-menu($num) {
+	@media only screen and (max-width: $tablet) {
+		#header,
+		.wrap-content,
+		#footer {
+			position: relative;
+			transition: .5s ease-out all;
+			left: 0;
+			z-index: 50;
+		
+			@if $num == 2 {
+				left: auto;
+				right: 0;
+			}
+		}
+
+		.block-menu {
+			position: fixed;
+			height: 9999px;
+			width: 100%;
+			top: 0;
+			left: 0;
+			// opacity: 0;
+			// visibility: hidden;
+			@if $num == 2 {
+				left: auto;
+				right: 0;
+			}
+			z-index: 100;
+			// background: rgba(0, 0, 0, 0.5);
+			transition: .3s ease-out forwards;
+			z-index: 0;
+
+			> h2 {
+				@include font(18px, 26px, 1.64px);
+				font-family: $font-brandb;
+				display: block;
+				color: white;
+				padding: 21px 30px 22.5px;
+				background: black;
+				max-width: 300px;
+				width: 100%;
+				position: absolute;
+				left: -300px;
+			
+				@if $num == 2 {
+					left: auto;
+					right: -300px;
+				}
+			
+				top: 0;
+				text-align: left;
+				transition: .5s ease-out all;
+				box-sizing: border-box;
+				margin: 0;
+			}
+
+			.menu {
+				position: absolute;
+				left: -300px;
+				@if $num == 2 {
+					left: auto;
+					right: -300px;
+				}
+				top: 70px;
+				max-width: 300px;
+				width: 100%;
+				height: 100%;
+				background: white;
+				transition: .5s ease-out all;
+				padding-top: 10px;
+			}
+
+			.menu-item {
+				float: none;
+				display: block !important;
+				margin: 0 0 10px !important;
+				padding: 0 30px;
+				transition: .5s ease-out all;
+
+				a {
+					display: block !important;
+					padding: 12px 0 15px 10px !important;
+					color: $color_gray_80 !important;
+					text-align: left;
+					border-left: 3px solid black;
+					text-transform: none !important;
+				}
+			}
+		}
+	}
+}
+
+
+@mixin rayita-coloreada($field) {
+	#{$field} {
+		padding-bottom: 20px;
+		margin-bottom: 22px;
+		position: relative;
+
+		@media only screen and (max-width: $tablet) {
+			margin-bottom: 14px;
+			padding-bottom: 13px;
+		}
+
+		&::before {
+			content: "";
+			background: #D7D9D0;
+			width: 66px;
+			height: 1px;
+			display: block;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+	
+		&::after {
+			content: "";
+			background: #005F6B;
+			width: 43px;
+			height: 4px;
+			display: block;
+			position: absolute;
+			bottom: -2px;
+			left: 0;
+		}
+
+		a {
+			color: #ECBE13;
+		    border-bottom: 1px solid rgba(236, 190, 19, 0);
+		    transition: border 500ms ease;
+		    &:hover {
+		        //text-decoration: underline $color-brand;
+		        border-bottom: 1px solid rgba(236, 190, 19, 1);
+		        opacity: 1;
+		        cursor: pointer;
+		    }
+		}
+	}
+}
+
+@mixin cuerpo-de-texto-bloque {
+	$space: 50px;
+	margin-bottom: $space;
+
+	p {
+		max-width: 545px;
+	}
+
+	h3 {
+		font-family: "acherus_grotesquebold";
+		font-size: 28px;
+		line-height: 31px;
+		max-width: 620px;
+	}
+
+	p + h3 {
+	    margin-top: $space;
+	}
+}
+
+

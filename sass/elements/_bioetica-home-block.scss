@@ -1,0 +1,31 @@
+// --------------------------- bloque home bioetica ----------------------------- //
+.dep-bioetica{
+	
+	padding: 7rem 0;
+    display: inline-block;
+    position: relative;
+    
+    &::before{
+	    content: url("../images/svg/grey-triangle.svg");
+		position: absolute;
+		top: 0;
+		left: 46%;
+    }
+    
+	//color green h2
+	h2{
+		color: $color_brand;
+		font: $font-bsb-l $font-bli;
+		margin: 2rem 0;
+	}
+	
+	//txt
+	.field--item{
+		font: $font-baser-s $font-serif-italic;
+		margin-bottom: 2rem;
+	}
+	
+	a{
+		@include buton-xl-green;
+	}
+}

@@ -1,0 +1,610 @@
+// --------------------------- Top Menu ----------------------------- //
+.container-top.pre-header{
+	// fix width max container
+	max-width: 1300px;
+	position: relative;
+	border-bottom: 1px solid $color_gray_10;
+	text-align: right;
+	margin: auto;
+	display: grid;
+	grid-template-columns: 100% 0px 0px 0px;
+	&::before,
+	&::after {
+		content: "";
+		border-bottom: 1px solid $color_gray_5;;
+		display: block;
+		//width: $bg-demasia-width;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 100%;
+	 }
+	&::after {
+	     left: auto;
+	     right: 100%;
+	 }
+	 
+	 // Section menus
+	 div > section:nth-child(1){
+		 @include inline-block(top);
+		 @include grid-porcentaje(9);
+		 margin-top: 1rem;
+		 
+		 // Superfish menu
+		 .sf-menu-superior-izquierdo{
+			 
+			  // Target first li elements
+			 li:first-child{
+				 font: $font-baser-xs $font-serif-italic;
+				 color: $color_gray_50;
+				 padding-top: 0.8rem;
+			 }
+			 
+			 // Li elements
+			 li{
+				 overflow: hidden;
+				 
+				 // links
+				 a{
+					 position: relative;
+					 font: $font-baseb-xs $font-baser;
+					 color: $color_gray_80;
+					 letter-spacing: 1.82px;
+					 transition: 1s ease-out all;
+					 padding: 1rem 0.5rem;
+					 text-decoration: none;
+					 &::before {
+						content: "";
+						background: $color-brand;
+						height: 4px;
+						width: 100%;
+						position: absolute;
+						bottom: -4px;
+						left: 0;
+						transition: .1s ease-out all;
+					}
+	
+					&:hover {
+						&::before {
+							bottom: 0;
+						}
+					}
+				}
+			 }
+			 
+			 // Target last 2 li elements
+			 // Bosque digital
+			 li:nth-last-child(1){
+				 float: right;
+				 border-left: 1px solid $color_gray_10;
+				 &::before {
+					content: url("../images/facultad/RUBY.svg");
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					left: 8px;
+					margin: auto;
+					height: 16px;
+					@media only screen and (max-width: $tablet) {
+						left: 5px;
+					}
+					@media only screen and (max-width: $mobile) {
+						display: none;
+					}
+				 }
+				 
+				 // links
+				 a{
+					 font: $font-baser-m $font-baseb;
+					 letter-spacing: 0;
+					 margin: 0 2.5rem;
+					 &::after {
+						content: url("../images/facultad/arrowBlackDown.svg");
+						position: absolute;
+						top: 0;
+						right: -8px;
+						bottom: 0;
+						margin: auto;
+						height: 16px;
+						transform: rotate(-90deg);
+
+						@media only screen and (max-width: $desktop-small) {
+							//right: -3px;
+						}
+					}
+				 }
+			 }
+			 
+			 // Directorio
+			 li:nth-last-child(2){
+				 float: right;
+				 border-left: 1px solid $color_gray_10;
+				 border-right: 1px solid $color_gray_10;
+				 
+				 // Links
+				 a{
+					 font: $font-serif-xs $font-baser;
+					 color: $color-brand;
+					 letter-spacing: 0;
+				 }
+			 }
+			 
+		 }
+		 
+		  // responsive
+		 @media only screen and (max-width: 1110px){
+			 @include grid-porcentaje(12);
+		 }
+		 
+		 @media only screen and (max-width: 800px){
+			 display: none;
+		 }
+		 
+	 }
+	 
+	 // Language
+	 div > section:nth-child(2){
+		 @include inline-block(top);
+		 @include grid-porcentaje(1);
+		 margin-top: 1rem;
+		 text-align: right;
+		 width: auto;
+		 
+		 //gtranslate
+		 .gtranslate{
+			select{
+				 @include latoregular(13px);
+				 @include estilo-base-input;
+				 color: $color_gray_60;
+				 width: 100%;
+				 background: url('../images/ArrowGreenDown.svg') no-repeat 98% 50% white;
+				 //background-position: calc(100% - 14px) 50%;
+				 appearance: none;
+				 text-indent: 1px;
+				 text-overflow: '';
+				 height: 25px;
+				 padding-left: 10px;
+				 margin-top: 3px;
+				 -webkit-appearance: button;
+				 &::-ms-expand {
+				     display: none;
+				 }
+			}
+		 }
+		 
+		  // responsive
+		 @media only screen and (max-width: 1110px){
+			 @include grid-porcentaje(3);
+			 width: auto;
+			 margin-top: 0.5rem;
+			 margin-bottom: 0.8rem;
+		 }
+	 }
+	 
+	 // Phone
+	 div > section:nth-child(3){
+		 @include inline-block(top);
+		 @include grid-porcentaje(1);
+		 margin-top: 1rem;
+		 text-align: right;
+		 width: auto;
+		 position: relative;
+		 a{
+			 font: $font-baser-xs $font-bsb;
+			 color: $color_gray_80;
+			 text-decoration: none;
+			 &::before{
+				content: url("../images/svg/phone.svg");
+				position: absolute;
+				top: 4px;
+				bottom: 0;
+				left: 0;
+				right: 90px;
+				margin: auto;
+				height: 16px;
+			 }
+			 @include underline-hover;
+		 }
+		 
+		 // responsive
+		 @media only screen and (max-width: 1110px){
+			 @include grid-porcentaje(2);
+			 text-align: right;
+			 width: auto;
+			 a{
+				 &::before{
+					left: 0;
+				 }
+			 }
+		 }
+		 // responsive
+		 @media only screen and (max-width: 602px){
+			 @include grid-porcentaje(3);
+			 width: auto;
+		 }
+	 }
+	 
+	  // Logo mobile
+	 div > section:nth-child(4){
+		 display: none;
+		 
+		 // responsive
+		 @media only screen and (max-width: 766px){
+			 display: block;
+			 position: absolute;
+			 top: 5rem;
+			 left: 2rem;
+			 z-index: 10;
+		 }
+	 }
+}
+
+// --------------------------- Menu ----------------------------- //
+header.navbar.container{
+	display: table;
+    background: none;
+    border: 0px;
+    padding: 0;
+    
+    // responsive
+	@media only screen and (max-width: 766px){
+	    background: $color-brand;
+	    width: 100%;
+	}
+	
+	//button responsive fix
+	.navbar-toggle{
+		border: 0px;
+		right: 3%;
+		.icon-bar{
+			background-color: #ffffff;
+		}
+		&:hover,
+		&:focus{
+			background-color: #fff;
+			.icon-bar{
+				background-color: $color-brand;
+			}
+		}
+	}
+}
+
+#navbar-collapse{
+	
+	border: 0px;
+	padding: 2rem 0 0;
+	
+	// logo brand
+	div > section{
+		display: inline-block;
+		@media only screen and (max-width: 766px) {
+			display: none;	
+		}
+	}
+	
+	ul.nav li.dropdown:hover > ul.dropdown-menu {
+		display: block;
+	}
+	
+	// Navigation Variables
+	$content-width: 1000px;
+	$breakpoint: 800px;
+	$nav-height: 70px;
+	$nav-background: #262626;
+	$nav-font-color: #ffffff;
+	$link-hover-color: #2581DC;
+	
+	// Outer navigation wrapper
+	.navigation {
+		height: $nav-height;
+		background: $nav-background;
+	}
+	
+	// Logo and branding
+	.brand {
+		position: absolute;
+		padding-left: 20px;
+		float: left;
+		line-height: $nav-height;
+		text-transform: uppercase;
+		font-size: 1.4em;
+		a,a:visited {
+			color: $nav-font-color;
+			text-decoration: none;
+		}
+	}
+	
+	// Container with no padding for navbar
+	.nav-container {
+		max-width: $content-width;
+		margin: 0 auto;
+	}
+	
+	// Navigation 
+	nav {
+		margin-top: 2%;
+		float: right;
+		
+		// frist children
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			
+			li {
+				float: left;
+				position: relative;
+				
+				a {
+					display: block;
+					//padding: 0.5rem 1rem;
+					//line-height: $nav-height;
+					//background: $nav-background;
+					color: $color_gray_80;
+					text-decoration: none;
+					
+					@include underline-hover;
+					
+					.caret{
+						display: none;
+					}
+					
+					/*&:hover {
+						background: $link-hover-color;
+						color: $nav-font-color;
+					}
+					
+					&:not(:only-child):after {
+						padding-left: 4px;
+						content: ' ▾';
+					}*/
+				} 
+				
+				// Dropdown list
+				ul li {
+					width: 100%;
+					
+					a {
+						padding: 15px;
+						line-height: 20px;
+						&::after{
+							display: none;
+						}
+					}
+					
+					&:hover{
+						ul{
+							display: block;
+							left: 100%;
+							top: 0%;
+						}
+					}
+				}
+				
+			}
+			
+			.active{
+				.dropdown-toggle{
+					border-bottom: 1px solid $color-brand;
+					background: none;
+				}
+				
+				ul li.active a{
+					background: $color_gray_5;
+					border-bottom: 1px solid $color-brand;
+				}
+			}
+			
+			li.dropdown{
+				// Add green arrows to dropdowns
+				a{
+					padding-right: 2rem;
+					&::after{
+						content: url("../images/svg/ArrowGreenDown.svg");
+						position: absolute;
+						top: 30%;
+						right: 6px;
+					}
+				}
+			}
+		}
+		
+		@media screen and (max-width: 1200px) {
+			float: left;
+		}
+	}
+	
+	// Dropdown list binds to JS toggle event
+	.nav-dropdown {
+		position: absolute;
+		display: none;
+		z-index: 1;
+		box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+	}
+	
+	/* Mobile navigation */
+	
+	// Binds to JS Toggle
+	.nav-mobile {
+		display: none;
+		position: absolute;
+		top: 0;
+		right: 0;
+		background: $nav-background;
+		height: $nav-height;
+		width: $nav-height;
+	}
+	
+	@media only screen and (max-width: 800px) {
+		// Hamburger nav visible on mobile only
+		.nav-mobile {
+			display: block;
+		}
+		
+		nav {
+			width: 96%;
+			float: none;
+			padding-left: 2rem;
+			margin-top: 0;
+			
+			ul {
+				//display: none;
+				
+				li {
+					//float: none;
+					
+					a {
+						padding: 15px;
+						line-height: 20px;
+					}
+					
+					ul li a {
+						padding-left: 30px;
+					}
+				}
+			}
+		}
+		
+		.nav-dropdown {
+			position: static;
+		}
+	}
+	
+	@media screen and (min-width: $breakpoint) {
+		.nav-list {
+			display: block !important;
+		}
+	}
+	
+	#nav-toggle {
+		position: absolute;
+		left: 18px;
+		top: 22px;
+		cursor: pointer;
+		padding: 10px 35px 16px 0px;
+		
+		span,
+		span:before,
+		span:after {
+			cursor: pointer;
+			border-radius: 1px;
+			height: 5px;
+			width: 35px;
+			background: $nav-font-color;
+			position: absolute;
+			display: block;
+			content: '';
+			transition: all 300ms ease-in-out;
+		}
+		
+		span:before {
+			top: -10px;
+		}
+		
+		span:after {
+			bottom: -10px;
+		}
+		
+		&.active span {
+			background-color: transparent;
+			
+			&:before,
+			&:after {
+				top: 0;
+			}
+			
+			&:before {
+				transform: rotate(45deg);
+			}
+			
+			&:after {
+				transform: rotate(-45deg);
+			}
+		}
+	}
+}
+
+#navbar-collapse[aria-expanded="true"]{
+	
+	overflow: visible;
+	padding: 0;
+	
+	// Hide logo desktop in mobile
+	div > section{
+		display: none;
+	}
+	
+	// Fix menu links and layout
+	div > nav{
+		ul{
+			li{
+				float: none;
+				
+				a{
+					color: $color_brand_white;
+					border-color: #ffffff;
+				}
+				
+			}
+		}
+		
+		.dropdown-menu{
+			position: relative;
+			float: none;
+			background: $color-brand;
+			box-shadow: none;
+			border: 0px;
+			
+			li{
+				padding-left: 3rem;
+				padding-right: 3rem;
+				a{
+					color: $color_brand_white;
+					&:hover{
+						background: $color-brand;
+					}
+				}
+				
+				ul{
+					left: 0;
+				}
+			}
+			
+		}
+		
+		.expanded{
+			a{
+				&::after{
+					content: url("../images/svg/ArrowWhiteDown.svg");
+					position: absolute;
+					top: 30%;
+					right: 6px;
+				}
+			}
+			
+			.expanded{
+				a{
+					&::after{
+						content: url("../images/svg/ArrowWhiteDown.svg");
+						position: absolute;
+						top: 30%;
+						right: 6px;
+					}
+				}
+			}
+		}
+		
+		.active{
+			.dropdown-toggle{
+				border-bottom: 1px solid #A5E74C;
+				background: #A5E74C;
+			}
+			
+			ul li.active a{
+				background: #A5E74C;
+				border-bottom: 1px solid #A5E74C;
+			}
+		}
+	}
+}

@@ -1,0 +1,543 @@
+body {
+    color: $color_gray_80;
+    &:before {
+        content: '';
+        transition: background 2s;
+    }
+    &.active-search {
+		.container--header-info {
+			z-index: 1;
+		}
+
+        &::before {
+            position: fixed;
+            /* Stay in place */
+            z-index: 2;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+    }
+    &.sub-menu-active {
+        // No oculta el header, usado para botones del menú principal
+        &.ov-1 {
+            .base-overlay.ov-1 {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        // Oculta header, usado para Botones del preheader
+        &.ov-2 {
+            .base-overlay.ov-2 {
+                opacity: 1;
+                visibility: visible;
+            }
+            &:after {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                height: 100%;
+                z-index: 1;
+                content: '';
+                top: 100px;
+            }
+        }
+        &.toolbar-fixed {
+            &:after {
+                top: 80px;
+            }
+        }
+        &.toolbar-horizontal {
+            &:after {
+                top: 180px;
+            }
+        }
+    }
+}
+
+.filtro-wrapper {
+	text-align: center;
+}
+
+.btn-filtro {
+	@include buton-l-green;
+}
+
+.base-overlay {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    z-index: 1; // No oculta el header
+    content: '';
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s ease-out all;
+    &.ov-2 {
+        z-index: 30; // Oculta el header
+    }
+}
+
+#header {
+    &.active-search {
+        z-index: 40;
+        background-color: rgba(0, 0, 0, 0);
+    }
+    &.active-facultad {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    &::before {
+        position: fixed;
+        /* Stay in place */
+        z-index: 2;
+        /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+}
+
+.container--header-info {
+    &.active-search-2 {
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
+ul {
+    margin: 0 0 15px;
+}
+
+p,
+.field--name-body li,
+.field--name-field-body li,
+.field--name-field-body2 li {
+    @include interna-parrafo;
+
+	a {
+		color: $color_brand;
+		text-decoration: none;
+		
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+.field--name-field-body {
+	p + ol {
+		margin-left: 10px;
+		margin-top: -10px;
+	}
+}
+
+p:last-child,
+li:last-child {
+    margin-bottom: 0;
+}
+
+.field--name-field-body,
+.field--name-body,
+.field--name-field-body2 {
+    ul {
+        //list-style-type: disc;
+        li {
+            @include interna-parrafo;
+            //padding-left: 25px;
+            @include bullet;
+        }
+    }
+}
+
+.flecha-delgada-izquierda {
+    background: url(../images/admisiones/flecha-delgada-derecha.svg) no-repeat 0 0 !important;
+    width: 28px;
+    height: 62px;
+    display: block;
+    transform: rotate(-180deg);
+}
+
+.flecha-delgada-derecha {
+    background: url(../images/admisiones/flecha-delgada-derecha.svg) no-repeat 0 0 !important;
+    width: 28px;
+    height: 62px;
+    display: block;
+}
+
+
+/*
+#header, .wrap-content {
+	//display: block;
+	margin: 0 auto;
+
+	> * {
+		flex-grow: inherit;
+		margin-right: 0;
+	}
+	
+}
+*/
+
+.wrap-content {
+    overflow: hidden;
+    max-width: none;
+    margin: 0;
+    min-height: 480px;
+}
+
+.layout-content {
+    margin: 0 auto;
+    max-width: 1200px;
+    // Los he puesto por el home, falta confirmar si es solo home o es general
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+
+	@media only screen and (max-width: $tablet) {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+}
+
+.post_content {
+    @include ib-grid;
+}
+
+.toolbar-horizontal {
+    .wrap-content {
+        padding-top: 71px !important;
+    }
+    &.toolbar-tray-open {
+        .wrap-content {
+            padding-top: 110px !important; //103px !important;
+        }
+    }
+}
+
+.not-logged-in {
+    .wrap-content {
+        padding-top: 102px;
+    }
+}
+
+.container--header-info {
+    background: $color_gray_10;
+    height: 40px;
+}
+
+.header_info {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.layout-content {
+    display: block;
+}
+
+#footer {}
+
+.title-suffix {
+    position: relative;
+}
+
+/*
+
+.sidebar-first {
+    max-width: 280px;
+    width: 100%;
+    float: left;
+    border-right: 1px solid $color_gray_15;
+    padding-top: 10px;
+    & + #main {
+        overflow: hidden;
+        padding-top: 25px;
+        padding-left: 20px;
+    }
+}
+*/
+
+// Borrar viernes
+.header_info .block-blockgroup,
+.header_info .block-gtranslate {
+    top: 40px !important;
+}
+
+#main .menu--menu-admisiones-lateral,
+.header_info .menu--menu-admisiones-lateral {
+    // display: none;
+}
+
+// URL: http://ubosque.d8.seedlabs.co/facultad/creacion-comunicacion
+// FILE: pages/page-faculties
+.lateral-button {
+    background: url(../images/boton-lateral.svg) no-repeat 0 0;
+    width: 112px;
+    height: 60px;
+    position: fixed;
+    right: -50px;
+    top: 28%; //40%;
+    cursor: pointer;
+    z-index: 1010;
+    display: block;
+    .equis {
+        background: url(../images/boton-lateral-equis.svg) no-repeat 0 0;
+        width: 29px;
+        height: 29px;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        transition: .1s ease-out all;
+    }
+    &:hover {
+        .equis {
+            transform: rotate(-45deg);
+        }
+    }
+}
+
+.lateral-menu-open {
+    .lateral-button {
+        .equis {
+            transform: rotate(45deg);
+        }
+    }
+}
+
+.plan-estudios {
+    overflow: hidden;
+}
+
+.masonry-layout {
+    //width: 110% !important;
+}
+
+.masonry-layout .masonry-item {
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+body.not-logged-in.path-frontpage {
+    @media only screen and (max-width: $tablet) {
+        //	background-color: #ddd;
+    }
+    @media only screen and (max-width: $mobile) {
+        //	background-color: orange;
+    }
+    .wrap-content,
+    #prefooter,
+    #footer {
+        //display: none;
+    }
+    #views-exposed-form-prueba-page-1 {}
+}
+
+#header,
+.container--header-info {
+    //	display: none;
+}
+
+//.menu-inscripciones {
+// .menu-programa-academico {
+//.menu-nuestro-bosque {
+    .menu-faculty {
+    // display: block !important;
+}
+
+.marronry {
+    @media only screen and (max-width: $mobile) {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+.tabMakerWrapper + .block-inner {
+    display: none;
+}
+
+.webform-element--title-inline,
+.js-form-type-email {
+    label {
+        >span {
+            width: 120px;
+        }
+    }
+}
+
+.page-wrapper {
+	overflow: hidden;
+}
+
+.js-form-type-checkbox {
+    position: relative;
+    input[type=checkbox] {
+        display: none;
+    }
+    input[type=checkbox] + label {
+        &:before {
+            content: "";
+            display: inline-block;
+            transition: width 2s;
+            box-shadow: 0px 0px 1px $color_gray_80;
+            border-radius: 2px;
+            margin: 0 12px 1px 1px;
+            width: 15px;
+            height: 15px;
+            transition: background-color 0.5s ease;
+            vertical-align: top;
+			position: relative;
+			top: 3px;
+        }
+    }
+    input[type=checkbox]:checked + label {
+        &:before {
+            content: '';
+            background-color: $color_brand;
+            background-image: url("../images/home/CheckWhite.svg");
+            background-position: center center;
+            background-repeat: no-repeat;
+            box-shadow: 0px 0px 1px $color_brand;
+            display: inline-block;
+            transition: width 2s;
+            position: relative;
+            transition: background-color 0.5s ease;
+            vertical-align: top;
+        }
+    }
+    span {
+        display: inline-block;
+        width: 80%;
+        vertical-align: top;
+        margin-left: 10px;
+        float: none;
+
+		span {
+			width: auto;
+		}
+    }
+}
+
+.js-form-type-radio {
+    position: relative;
+    input[type=radio] {
+        display: none !important;
+    }
+    input[type=radio] + label {
+        &:before {
+            content: "";
+            display: inline-block;
+            transition: width 2s;
+            box-shadow: 0px 0px 2px $color_brand;
+            border-radius: 15px;
+            margin: 0 5px 1px 1px;
+            width: 15px;
+            height: 15px;
+            vertical-align: middle;
+            transition: background-color 0.5s ease;
+        }
+    }
+    input[type=radio]:checked + label {
+        &:before {
+            content: '';
+            background-color: $color_brand;
+            background-image: url("../images/home/CheckWhite.svg");
+            background-position: center center;
+            background-repeat: no-repeat;
+            box-shadow: 0px 0px 2px $color_brand;
+            display: inline-block;
+            transition: width 2s;
+            position: relative;
+            transition: background-color 0.5s ease;
+        }
+    }
+}
+
+.js-class-page-404 {
+    .sidebar-first {
+        display: none;
+    }
+    .node--type-pagina-basica-bosque {
+        max-width: 745px;
+        margin: 0 auto;
+        @media only screen and (min-width: $tablet) {
+            min-height: 500px;
+        }
+    }
+}
+
+.button-page-404 {
+    text-align: center;
+    a {
+        @include buton-s-green;
+    }
+}
+
+.btn-back {
+	@include sidebar-menu-title;
+	display: block;
+	text-transform: uppercase;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	letter-spacing: 2px;
+	line-height: 100%;
+	border-bottom: 1px solid #ededed;
+	margin-bottom: 14px;
+}
+
+.link {
+	@include link-green;
+}
+
+body .video-js .vjs-big-play-button {
+	background: url(../images/owl.video.play.png) no-repeat 50%;
+	border: 0;
+	width: 50px;
+	height: 50px;
+	background-size: 50px auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+
+	&::before {
+		display: none;
+	}
+
+	&:hover {
+		background-color: transparent;
+	}
+}
+
+body .video-js:hover .vjs-big-play-button, 
+.video-js .vjs-big-play-button:focus {
+	background-color: transparent;
+}
+
+.cuerpo-de-texto-bloque {
+	@include cuerpo-de-texto-bloque;
+}

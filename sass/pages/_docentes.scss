@@ -1,0 +1,248 @@
+// ------------------- Mixin tabs  ------------------- //
+@mixin bioetica-tabs() {
+    // Tab buttons wrapper
+    .ui-tabs-nav {
+        text-align: center;
+        position: relative;
+        z-index: 20;
+        background: none;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+    // Li container button
+    .ui-tabs-tab{
+	    border: none;
+	    background: none;
+	    
+	    // Single tab button (Desktop)
+	    .ui-tabs-anchor {
+	        @include inline-block(bottom);
+	        @include acherus_bold(13px);
+	        letter-spacing: 1px;
+	        color: #9B9B9B;
+	        padding: 17px 0 13px;
+	        margin: 0 15px;
+	        cursor: pointer;
+	        font-size: 13px;
+	        transition: .3s ease-out all;
+	        position: relative;
+	        @media only screen and (max-width: $mobile) {
+	            display: none !important;
+	        }
+	        &::before {
+	            content: "";
+	            background: $color_brand;
+	            height: 4px;
+	            width: 100%;
+	            position: absolute;
+	            top: 100%;
+	            left: 0;
+	            opacity: 0;
+	            visibility: hidden;
+	            transition: .3s ease-out all;
+	        }
+	        i {
+	            position: absolute;
+	            bottom: 16px;
+	            right: -10px;
+	            background: url('../images/svg/LittleArrowGrey.svg') no-repeat;
+	            width: 6px;
+	            height: 4px;
+	            z-index: 3;
+	            opacity: 1;
+	            transition: .3s ease-out all;
+	        }
+	        &:hover {
+	            @include title_tabs_active;
+	            i {
+	                right: 0;
+	                opacity: 0;
+	            }
+	            &::before {
+	                opacity: 1;
+	                visibility: visible;
+	            }
+	        }
+	    }
+	    
+	    &[aria-expanded="true"]{
+		    .ui-tabs-anchor{
+			     @include title_tabs_active;
+	            i {
+	                right: 0;
+	                opacity: 0;
+	            }
+	            &::before {
+	                opacity: 1;
+	                visibility: visible;
+	            }
+		    }
+	    }
+    }
+    // Single tab button (Mobile)
+    .tabMakerTabMobile {
+        font-family: $font-bsb;
+        font-size: 13px !important;
+        color: $color_gray_60;
+        text-align: center;
+        letter-spacing: 1px;
+        line-height: 100%;
+        padding: 12px 0 15px;
+        cursor: pointer;
+        border-bottom: 1px solid $color_brand_dark_15;
+        position: relative;
+        background-color: white;
+        .hovered {
+            transition: .3s ease-out all;
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            //height: 100%;
+            line-height: 100%;
+            padding: 12px 0 15px;
+            font-family: $font-brandb;
+            color: $color_gray_80;
+            background: white;
+            z-index: 4;
+            i {
+                display: none;
+            }
+        }
+        &::before {
+            content: "";
+            background: $color-brand;
+            height: 3px;
+            width: 100%;
+            position: absolute;
+            bottom: -1px;
+            left: -100%;
+            transition: .3s ease-out all;
+            z-index: 5;
+        }
+        i {
+            @include inline-block(top);
+            margin-top: 7px;
+            margin-left: 3px;
+            background: url('../images/svg/LittleArrowGrey.svg') no-repeat;
+            width: 6px;
+            height: 4px;
+            z-index: 3;
+            opacity: 1;
+            transition: .3s ease-out all;
+        }
+        @media only screen and (max-width: $mobile) {
+            display: block !important;
+            &+.tabMakerContentInner {
+                display: none;
+            }
+        }
+    }
+    .active-mobile-tab .tabMakerTabMobile {
+        &::before,
+        .hovered {
+            left: 0;
+        }
+    }
+    // Prevenimos para que siempre se vean en tablet y desktop
+    .tabMakerContentInner {
+        @media only screen and (min-width: $mobile) {
+            display: block !important;
+        }
+    }
+    // Tab contents wrapper
+    .tabMakerContents {
+        background: $color_gray_5;
+        position: relative;
+        &::before,
+        &::after {
+            content: "";
+            background: $color_gray_5;
+            display: block;
+            //width: $bg-demasia-width;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 100%;
+        }
+        &::after {
+            left: auto;
+            right: 100%;
+        }
+    }
+    // Single tab content
+    .tabMakerContent {
+        overflow: hidden;
+        padding: 30px 100px 30px 100px;
+        @media only screen and (max-width: $mobile) {
+            display: block !important;
+            padding: 0;
+        }
+        .text-content {
+            max-width: 325px;
+            width: 100%;
+            float: left;
+            padding-right: 60px;
+            box-sizing: border-box;
+        }
+    }
+}
+
+
+// ------------------- Docentes pagina  ------------------- //
+.page-node-type-page, .page-node-type-proyecto-de-investigacion, .page-node-type-pagina-de-parrafo-titulo-e-image, .page-node-type-links-de-interes{
+	
+	// Tabs
+	.blocktabs{
+		border: none;
+		margin-top: 2rem;
+		@include bioetica-tabs;
+		// Intern info
+		.ui-widget-content{
+			padding: 2rem;
+			// Vistas
+			.views-row{
+				@include inline-block(top);
+				@include grid-porcentaje(5);
+				margin: 2rem;
+				@media only screen and (max-width: $tablet) {
+						@include grid-porcentaje(12);
+				}
+				// Titulo docente
+				.views-field-title{
+					font: $font-bl-m $font-bsb;
+				}
+				// Imagen docente
+				.views-field-field-imagen-del-profesor{
+					margin: 1rem 0;
+					    width: 15rem;
+					    border-radius: 100%;
+					    overflow: hidden;
+					    height: 15rem;
+				}
+				// pais
+				.views-field-field-pais{
+					font: $font-baser-s $font-bsb;
+				}
+				// Body copy
+				.views-field-body{
+					margin: 1rem 0;
+				}
+				// email and cvlac
+				.views-field-field-correo-electronico, .views-field-field-hoja-de-vida-cvlac{
+					a{
+						font: $font-baser-s $font-serif-italic;
+						text-decoration: none;
+						color: $color_brand;
+						@include underline-hover;
+					}
+				}
+			}
+			// End vistas
+		}
+		// End Intern info
+	}
+	// End tabs
+}
